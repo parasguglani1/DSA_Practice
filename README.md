@@ -52,6 +52,12 @@ I decided to take this course as a head start for the upcoming course on Data St
 | 9.      | [Queue](./Queue/)                                       |
 | 10.      | [Trees](/Trees/)                                           |
 | 11.      | [Binary Search Trees](./Binary_Search_Trees)            |
+| 12.      | [AVL Trees](./AVL_Trees)            |
+| 13.      | [Search Trees](./Search_Trees)            |
+| 14.      | [Heap](./Heap)            |
+| 15.      | [Sorting Techniques](./Sorting_Techniques)            |
+| 16.      | [Hashing Technique](./Hashing_Technique)            |
+| 17.      | [Graphs](./Graphs)            |
 
 ## :arrow_down: Installation
 
