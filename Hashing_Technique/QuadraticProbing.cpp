@@ -1,5 +1,16 @@
 // Hash table implementing collusion-resolution technique linear probing
 // Only n/2 elements permittable for an n-sized hash table
+
+/* Quadratic probing: open addressing, another collision resolution technique.
+It's similar to linear probing, but there's a difference:
+Linear: h'(x)=(h(x)+f(i))%size where f(i)=1, i=0,1,2...
+Quadratic: h'(x)=(h(x)+f(i))%size where f(i)=i^2, i=0,1,2...
+This means that elements are stored farther and farther away each time a collision
+occurs at a given place.
+Analysis:
+Avg. successful search: (-log base e(1 - lambda))/lambda
+Avg. unsuccessful search: 1/(1 - lambda)
+*/
 # include <iostream>
 using namespace std;
 
