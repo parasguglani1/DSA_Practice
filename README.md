@@ -3,14 +3,28 @@
 This repository contains notes and practice files from the [Data Structures and Algorithms course on Udemy](https://www.udemy.com/course/datastructurescncpp/) by Mr Abdul Bari.
 Efforts were made to make the files as readable as possible, by Commenting the code and adding explanations still there is room for improvement.
 
-![img](./Screenshots/array.png)
+
 <center> Array</center>
 
-![img](./Screenshots/DiagonalMatrix.png)
-<center>Matrix</center>
+![img](./Screenshots/array_menu.png)
 
-![img](./Screenshots/tower%20of%20hanoi.png)
-<center>Tower Of Hanoi</center>
+<center> Sorting Algorithms</center>
+
+![img](./Screenshots/sorting.png)
+
+<center> Binary Tree</center>
+
+![img](./Screenshots/Binary_Tree.png)
+
+<center> AVL Tree</center>
+
+
+![img](./Screenshots/AVL.png)
+
+<center> Graph</center>
+
+![img](./Screenshots/graph.png)
+
 
 
 ## Description
