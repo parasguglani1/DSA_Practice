@@ -1,3 +1,4 @@
+#include <bits/stdc++.h>
 #include<iostream>
 #include<stdlib.h>
 #include<cmath>
@@ -160,16 +161,17 @@ void reverseArray(struct Array *arr, struct Array *arr1){
 }
 
 //reverse array using swap
-void reverseArray(struct Array *arr){
-    for(int i=0; i<arr->length; i++){
-        swap(&arr->A[i], &arr->A[arr->length-1]);
-    }
-}
 
 void swap(int *a, int *b){
     int temp = *a;
     *a = *b;
     *b = temp;
+}
+
+void reverseArray(struct Array *arr){
+    for(int i=0; i<arr->length; i++){
+        swap(&arr->A[i], &arr->A[arr->length-1]);
+    }
 }
 
 //insert element in sorted array
@@ -315,6 +317,9 @@ int main(){
     cout<<endl<<"enter the size of array"<<endl;
     cin>>arr.size;
     arr.A = (int *)malloc(arr.size*sizeof(int ));
+    arr.length=0;
+    insert(&arr, 0,5);
+
     Display(arr);
     return 0;
 }
