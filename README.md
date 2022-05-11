@@ -1,5 +1,7 @@
 # Mastering Data Structurs and algorithms in C/C++
 
+[![Typing SVG](https://readme-typing-svg.herokuapp.com?color=%2336BCF7&duration=4000&center=true&lines=C%2B%2B+%7C+Problem+Solving)](https://git.io/typing-svg)<br />
+
 This repository contains notes and practice files from the [Data Structures and Algorithms course on Udemy](https://www.udemy.com/course/datastructurescncpp/) by Mr Abdul Bari.
 Efforts were made to make the files as readable as possible, by Commenting the code and adding explanations still there is room for improvement.
 
