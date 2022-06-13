@@ -13,13 +13,13 @@ using namespace std;
     - Bin/Bucket Sort
     - Shell Sort
     - Heap Sort already in heap
- 
+
 
 * number of comparisons:
 * number of swaps:
 * Adaptivity i.e already almost sorted
 * stability i.e which preserves the original order of input set
-* space complexity: 
+* space complexity:
 
 
     */
@@ -178,7 +178,7 @@ void sorts<T>::insertionSort(T arr[], int n)
         arr[j + 1] = x; // virtually empty index, for insertion
     }
     /*
-* assume left side is sorted and right side is unsorted and we are inserting the element at the correct position in the sorted array 
+* assume left side is sorted and right side is unsorted and we are inserting the element at the correct position in the sorted array
 * number of passes - n-1
 * number of comparisons - n(n-1)/2
 * max number of swaps - n(n-1)/2
@@ -274,7 +274,7 @@ void sorts<T>::quickSort(T *arr, int l, int h)
 template <typename T>
 void sorts<T>::mergeSort(T *arr, int l, int h)
 {
-    //recursive merge sort
+    // recursive merge sort
     if (l < h)
     {
         int mid = (l + h) / 2;
@@ -368,7 +368,7 @@ void sorts<T>::countSort(T *arr, int n)
     delete count;
 
     /*
-* counts the amount of each element in the array and stores it in a new array and then copies the elements in the sorted array  
+* counts the amount of each element in the array and stores it in a new array and then copies the elements in the sorted array
 
 
 
@@ -494,7 +494,7 @@ void sorts<T>::shellSort(T *arr, int n)
         }
     }
     /*
-* uses a gap to sort the array in a similar way to insertion sort but with a gap 
+* uses a gap to sort the array in a similar way to insertion sort but with a gap
 
 * no of passes = log(n)
 * time complexity - O(n logn)
