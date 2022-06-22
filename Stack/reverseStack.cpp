@@ -45,7 +45,7 @@ Sample Output 2:
 
 
  */
-
+// stores reversed stack in st2
 #include <bits/stdc++.h>
 using namespace std;
 int main()
