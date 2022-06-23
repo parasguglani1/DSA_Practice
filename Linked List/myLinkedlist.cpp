@@ -183,7 +183,6 @@ void printReverseR(Node *head)
     }
     printReverseR(head->next);
     cout << head->data << " ";
-
 }
 
 Node *reverseIterative(Node *head)
@@ -229,11 +228,16 @@ Node *reverseIterative(Node *head)
         // cout << endl;
     }
     if (second)
+    {
         second->next = first;
-    head = second;
-    return head;
+        head = second;
+        return head;
+    }
+    // single node case
+    return first;
 }
-//shorter
+
+// shorter
 Node *reverseLinkedListIterative(Node *head)
 {
     Node *previous = NULL;
@@ -421,7 +425,6 @@ Node *mergeUsingExtraSpace(Node *head1, Node *head2)
     return head3;
 }
 
-
 Node *mergeWithoutExtraSpace(Node *head1, Node *head2)
 {
     Node *tail = NULL;
@@ -466,7 +469,7 @@ Node *mergeWithoutExtraSpace(Node *head1, Node *head2)
     return head1;
 }
 
-//similar code
+// similar code
 Node *mergeTwoSortedLinkedLists(Node *head1, Node *head2)
 {
     Node *result = new Node(0);
@@ -631,7 +634,6 @@ Node *mergesort(Node *head1)
     }
     return head1;
 }
-
 
 void printIthNode(Node *head, int i)
 {
