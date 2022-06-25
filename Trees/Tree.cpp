@@ -17,7 +17,14 @@ TreeNode<T>::TreeNode(T data)
 {
     this->data = data;
 }
-
+template <typename T>
+TreeNode<T>::~TreeNode()
+{
+    for (int i = 0; i < children.size(); i++)
+    {
+        delete children[i];
+    }
+}
 /*
 Print tree recursive function can only be called on objects of type TreeNode. so I used normal functions instead of this.
 template <typename T>
@@ -33,14 +40,6 @@ void TreeNode<T>::printTreeRecursive(TreeNode<T> *root)
         printTreeRecursive(root->children[i]);
     }
 } */
-template <typename T>
-TreeNode<T>::~TreeNode()
-{
-    for (int i = 0; i < children.size(); i++)
-    {
-        delete children[i];
-    }
-}
 
 void printTreeRecursive(TreeNode<int> *root)
 {
@@ -127,6 +126,116 @@ TreeNode<int> *takeInputLevelOrder()
         }
     }
     return root;
+}
+
+/**
+ *  Count Number of Nodes
+ */
+int countNodes(TreeNode<int> *root)
+{
+    if (root == NULL)
+    {
+        return 0;
+    }
+    int ans = 1;
+    for (int i = 0; i < root->children.size(); i++)
+    {
+        ans += countNodes(root->children[i]);
+    }
+    return ans;
+}
+
+int sumOfNodes(TreeNode<int> *root)
+{
+    if (!root)
+    {
+        return 0;
+    }
+    int sum = root->data;
+    for (int i = 0; i < root->children.size(); i++)
+    {
+        sum += sumOfNodes(root->children[i]);
+    }
+    return sum;
+}
+
+TreeNode<int> *nodeWithLargestData(TreeNode<int> *root)
+{
+    if (!root)
+    {
+        return 0;
+    }
+    TreeNode<int> *largest = root;
+    for (int i = 0; i < root->children.size(); i++)
+    {
+        TreeNode<int> *curr = nodeWithLargestData(root->children[i]);
+        if (curr->data > largest->data)
+        {
+            largest = curr;
+        }
+    }
+    return largest;
+}
+
+int getHeight(TreeNode<int> *root)
+{
+    if (!root)
+    {
+        return 0;
+    }
+    int height = 0;
+    for (int i = 0; i < root->children.size(); i++)
+    {
+        height = max(height, getHeight(root->children[i]));
+    }
+    return height + 1;
+}
+
+void preOrderTraversal(TreeNode<int> *root)
+{
+    if (!root)
+    {
+        return;
+    }
+    cout << root->data << " ";
+
+    for (int i = 0; i < root->children.size(); i++)
+    {
+        preOrderTraversal(root->children[i]);
+    }
+
+    return;
+}
+
+void postOrderTraversal(TreeNode<int> *root)
+{
+    if (!root)
+    {
+        return;
+    }
+    cout << root->data << " ";
+
+    for (int i = 0; i < root->children.size(); i++)
+    {
+        postOrderTraversal(root->children[i]);
+    }
+
+    return;
+}
+
+void printAtLevelK(TreeNode<int> *root, int k)
+{
+    if (!root)
+        return;
+    if (k == 0)
+    {
+        cout << root->data << " ";
+        return;
+    }
+    for (int i = 0; i < root->children.size(); i++)
+    {
+        printAtLevelK(root->children[i], k - 1);
+    }
 }
 
 // int main()
