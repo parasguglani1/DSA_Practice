@@ -7,7 +7,7 @@ using namespace std;
 
 int main()
 {
-    TreeNode<int> *root = takeInputLevelOrder();
+    TreeNode<int> *root = takeInputLevelWise();
     int k;
     cin >> k;
     printAtLevelK(root, k);
