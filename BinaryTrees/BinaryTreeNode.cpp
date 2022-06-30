@@ -141,6 +141,7 @@ void printLevelorder(BinaryTreeNode<int> *root)
 
 void printLevelATNewLine(BinaryTreeNode<int> *root)
 {
+    // insert null whenever new level is inserted
     queue<BinaryTreeNode<int> *> q;
     q.push(root);
     q.push(NULL);
