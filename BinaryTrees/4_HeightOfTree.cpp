@@ -48,17 +48,6 @@ Sample Output 2:
 #include <bits/stdc++.h>
 #include "BinaryTreeNode.cpp"
 using namespace std;
-int getHeight(BinaryTreeNode<int> *root)
-{
-  if (!root)
-  {
-    return 0;
-  }
-
-  int height1 = getHeight(root->left);
-  int height2 = getHeight(root->right);
-  return max(height1, height2) + 1;
-}
 
 int main()
 {

@@ -37,20 +37,6 @@ false
 #include <bits/stdc++.h>
 #include "BinaryTreeNode.cpp"
 using namespace std;
-bool isNodePresent(BinaryTreeNode<int> *root, int x)
-{
-    if (!root)
-    {
-        return false;
-    }
-    if (root->data == x)
-    {
-        return true;
-    }
-    bool ifPresentLeft = isNodePresent(root->left, x);
-    bool ifPresentRight = isNodePresent(root->right, x);
-    return ifPresentLeft || ifPresentRight;
-}
 
 int main()
 {

@@ -37,39 +37,6 @@ post - 4 5 2 6 7 3 1
 #include "BinaryTreeNode.cpp"
 using namespace std;
 
-void preOrder(BinaryTreeNode<int> *root)
-{
-    if (!root)
-    {
-        return;
-    }
-    cout << root->data << " ";
-    preOrder(root->left);
-    preOrder(root->right);
-}
-
-void inOrder(BinaryTreeNode<int> *root)
-{
-    if (!root)
-    {
-        return;
-    }
-    inOrder(root->left);
-    cout << root->data << " ";
-    inOrder(root->right);
-}
-
-void postOrder(BinaryTreeNode<int> *root)
-{
-    if (!root)
-    {
-        return;
-    }
-    postOrder(root->left);
-    postOrder(root->right);
-    cout << root->data << " ";
-}
-
 int main()
 {
     BinaryTreeNode<int> *root = taktInputLevelorder();

@@ -169,3 +169,73 @@ void printLevelATNewLine(BinaryTreeNode<int> *root)
         }
     }
 }
+
+int countNodes(BinaryTreeNode<int> *root)
+{
+    if (!root)
+    {
+        return 0;
+    }
+    int count = 1;
+    count += countNodes(root->left);
+    count += countNodes(root->right);
+    return count;
+}
+
+int getHeight(BinaryTreeNode<int> *root)
+{
+    if (!root)
+    {
+        return 0;
+    }
+
+    int height1 = getHeight(root->left);
+    int height2 = getHeight(root->right);
+    return max(height1, height2) + 1;
+}
+bool isNodePresent(BinaryTreeNode<int> *root, int x)
+{
+    if (!root)
+    {
+        return false;
+    }
+    if (root->data == x)
+    {
+        return true;
+    }
+    bool ifPresentLeft = isNodePresent(root->left, x);
+    bool ifPresentRight = isNodePresent(root->right, x);
+    return ifPresentLeft || ifPresentRight;
+}
+void preOrder(BinaryTreeNode<int> *root)
+{
+    if (!root)
+    {
+        return;
+    }
+    cout << root->data << " ";
+    preOrder(root->left);
+    preOrder(root->right);
+}
+
+void inOrder(BinaryTreeNode<int> *root)
+{
+    if (!root)
+    {
+        return;
+    }
+    inOrder(root->left);
+    cout << root->data << " ";
+    inOrder(root->right);
+}
+
+void postOrder(BinaryTreeNode<int> *root)
+{
+    if (!root)
+    {
+        return;
+    }
+    postOrder(root->left);
+    postOrder(root->right);
+    cout << root->data << " ";
+}
