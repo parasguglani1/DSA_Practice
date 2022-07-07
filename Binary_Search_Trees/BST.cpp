@@ -367,5 +367,7 @@ int main()
     cout << "30 found at address: " << b.rSearch(30) << "\n";
     cout << "20 found at address: " << b.search(20) << "\n";
     b.inOrder();
-    return 0;
+
+    createFromPre()
+     return 0;
 }
