@@ -368,6 +368,5 @@ int main()
     cout << "20 found at address: " << b.search(20) << "\n";
     b.inOrder();
 
-    createFromPre()
-     return 0;
+    return 0;
 }
