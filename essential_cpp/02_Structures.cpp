@@ -1,6 +1,6 @@
 /*
  * Structures
- * 
+ *
  * Structures can be defined as a collection of data under one name. Its elements can be
  * different data types.
  */
@@ -13,7 +13,7 @@ using namespace std;
 /*
  * Struct can be used to store a variable with at least 2 parts, for example a complex
  * number has 2 parts a and b, used to define a variable i (imaginary number).
- * 
+ *
  * a + ib
  */
 struct Complex
@@ -38,7 +38,7 @@ struct Student
 struct Card
 {
   string name, suit;
-  int rank; 
+  int rank;
 };
 
 
@@ -46,6 +46,9 @@ int main()
 {
   // Rectangle
   struct Rectangle r = {10, 5};
+  r.length=45;
+  r.breadth=60;
+  cout<<r.length;
   // Returns 8 because r is 4 (length) + 4 (breadth)
   cout << "Size of r: " << sizeof(r) << endl;
   // The dot . operator is used to access (read/write) a member of a structure
