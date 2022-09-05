@@ -7,7 +7,8 @@ using namespace std;
 int fib(int n)
 {
   int t0 = 0, t1 = 1, s = 0, i;
-  if (n <= 1) return n;
+  if (n <= 1)
+    return n;
   for (i = 2; i <= n; i++)
   {
     s = t0 + t1;
@@ -27,7 +28,7 @@ int rfib(int n)
 int F[10];
 int mfib(int n)
 {
-  if(n <= 1)
+  if (n <= 1)
   {
     F[n] = n;
     return n;
@@ -45,9 +46,18 @@ int mfib(int n)
 
 int main()
 {
+  int t;
+  cin >> t;
   for (int i = 0; i < 10; i++)
-    F[i]= -1;
-  cout << mfib(5) << endl;
+    F[i] = -1;
+  while (t--)
+  {
+    int n;
+    cin >> n;
+    cout << mfib(n) << endl;
+  }
+
+  // cout << mfib(5) << endl;
   // cout << rfib(10) << endl;
 
   return 0;
