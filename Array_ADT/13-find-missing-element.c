@@ -38,7 +38,7 @@ int single_missing_element(struct Array arr) // O(n)
 {
     int lower = arr.A[0];
     int diff = lower - 0;
-    //int higher = arr.A[arr.length -1];
+    // int higher = arr.A[arr.length -1];
     for (int i = 0; i < arr.length; i++)
     {
         if (arr.A[i] - i != diff)
@@ -68,7 +68,7 @@ void multiple_missing_elements(struct Array arr) // O(n)
 
 int main(void)
 {
-    struct Array arr1 = {{1, 2, 3, 4, 5, 6, 8, 9, 10, 11, 12}, 11, 11}; // 7 missing
+    struct Array arr1 = {{1, 2, 3, 4, 5, 6, 8, 9, 10, 11, 12}, 11, 11};     // 7 missing
     struct Array arr2 = {{6, 7, 8, 9, 10, 11, 13, 14, 15, 16, 17}, 11, 11}; // 12 missing
     struct Array arr3 = {{6, 7, 8, 9, 11, 12, 15, 16, 17, 18, 19}, 11, 11}; // 10, 13, 14 missing
 

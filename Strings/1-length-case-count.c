@@ -159,32 +159,32 @@ int main(void)
     // C++: cout << temp (will display A)
 
     // Array of characters
-    char x[5]; // Declaration
+    char x[5];                             // Declaration
     char y[5] = {'A', 'B', 'C', 'D', 'E'}; // Declaration with initialization
-    char z[] = {'A', 'B', 'C', 'D', 'E'}; // Size will depend
+    char z[] = {'A', 'B', 'C', 'D', 'E'};  // Size will depend
     char a[] = {64, 65, 66, 67, 68};
     char b[5] = {'A', 'B'}; // Other characters initialized to 0
-    printf("%d \n", b[2]); // 0
+    printf("%d \n", b[2]);  // 0
 
     // Strings vs Array of Characters
-    char name1[10] = {'J', 'o', 'h', 'n'}; // array of characters
+    char name1[10] = {'J', 'o', 'h', 'n'};       // array of characters
     char name2[10] = {'J', 'o', 'h', 'n', '\0'}; // string
     // \0 is a NULL character / string delimiter / end of string character / string terminator
     char name3[] = "John"; // Like this, \0 will be automatically included
-    char *name4 = "John"; // Implicitly allocated in heap memory
+    char *name4 = "John";  // Implicitly allocated in heap memory
     // name4 will be a character pointer pointing to a string in heap
 
     // Printing strings
     printf("%s \n", name2); // John
 
     // Scanning strings (only one word)
-    scanf("%s", name2); // If yoaju type "David" it will be stored in name2
+    scanf("%s", name2);     // If yoaju type "David" it will be stored in name2
     printf("%s \n", name2); // David
 
     // Scanning multiple words
     fflush(stdin); // Use this after scanf and before gets
 
-    gets(name2); // Suppose you type "Taj Mahal"
+    gets(name2);            // Suppose you type "Taj Mahal"
     printf("%s \n", name2); // Taj Mahal
 
     // Length with empty for loop in main
@@ -192,7 +192,6 @@ int main(void)
     int i;
     for (i = 0; s[i] != '\0'; i++)
     {
-
     }
     printf("Length is %d \n", i);
 
@@ -232,7 +231,7 @@ int main(void)
 
     // Counting words
     printf("%d \n", count_words(D));
-    char E[] = "How are   u"; // Extra spaces
+    char E[] = "How are   u";        // Extra spaces
     printf("%d \n", count_words(E)); // It handles extra spaces correctly
 
     return 0;

@@ -43,7 +43,7 @@ int delete_item(struct Array *arr, int index)
     if (index >= 0 && index < arr->length)
     {
         x = arr->A[index];
-        for(i = index; i < arr->length; i++)
+        for (i = index; i < arr->length; i++)
         {
             arr->A[i] = arr->A[i + 1];
         }
@@ -177,7 +177,7 @@ float average(struct Array arr, int length)
         total += arr.A[i];
     }
     // Average can be even simpler: return sum(arr)/arr.length
-    return (float) total / length;
+    return (float)total / length;
 }
 
 // Reverse: one of the methods use an auxiliary array, O(n)
@@ -245,10 +245,10 @@ bool is_sorted(struct Array arr)
 // Rearrange: negative numbers on the left side and positive on the right
 void neg_left_side(struct Array *arr) // O(n)
 {
-   int i = 0;
-   int j = arr->length;
-   while (i < j)
-   {
+    int i = 0;
+    int j = arr->length;
+    while (i < j)
+    {
         while (arr->A[i] < 0)
         {
             i++;
@@ -263,10 +263,10 @@ void neg_left_side(struct Array *arr) // O(n)
             arr->A[i] = arr->A[j];
             arr->A[j] = temp;
         }
-   }
+    }
 }
 
-struct Array * merge(struct Array *arr1, struct Array *arr2) // Theta(m+n)
+struct Array *merge(struct Array *arr1, struct Array *arr2) // Theta(m+n)
 {
     struct Array *arr3 = (struct Array *)malloc(sizeof(struct Array));
     int i, j, k;
@@ -297,7 +297,7 @@ struct Array * merge(struct Array *arr1, struct Array *arr2) // Theta(m+n)
 }
 
 // Union: new array with all the elements from A and B, but without duplicates
-struct Array * union_sorted(struct Array *arr1, struct Array *arr2) // For sorted arrays
+struct Array *union_sorted(struct Array *arr1, struct Array *arr2) // For sorted arrays
 {
     struct Array *arr3 = (struct Array *)malloc(sizeof(struct Array));
     int i, j, k;
@@ -333,7 +333,7 @@ struct Array * union_sorted(struct Array *arr1, struct Array *arr2) // For sorte
 }
 
 // Intersection: the third array contains elements that are shared by A and B
-struct Array * intersection_sorted(struct Array *arr1, struct Array *arr2) // For sorted arrays
+struct Array *intersection_sorted(struct Array *arr1, struct Array *arr2) // For sorted arrays
 {
     struct Array *arr3 = (struct Array *)malloc(sizeof(struct Array));
     int i, j, k;
@@ -361,7 +361,7 @@ struct Array * intersection_sorted(struct Array *arr1, struct Array *arr2) // Fo
 }
 
 // Difference: A - B, this means the third array contains elements from A that aren't in B.
-struct Array * difference_sorted(struct Array *arr1, struct Array *arr2) // For sorted arrays
+struct Array *difference_sorted(struct Array *arr1, struct Array *arr2) // For sorted arrays
 {
     struct Array *arr3 = (struct Array *)malloc(sizeof(struct Array));
     int i, j, k;
@@ -392,8 +392,8 @@ struct Array * difference_sorted(struct Array *arr1, struct Array *arr2) // For 
     return arr3;
 }
 
-
-int main(void) {
+int main(void)
+{
 
     struct Array arr1;
     int choice, item, index, sorted;
@@ -401,7 +401,7 @@ int main(void) {
     printf("Enter the size of the array: ");
     scanf("%d", &arr1.size);
     arr1.A = (int *)malloc(arr1.size * sizeof(int));
-    memset(arr1.A, 0, arr1.size*sizeof(int));
+    memset(arr1.A, 0, arr1.size * sizeof(int));
     arr1.length = 0;
 
     do
@@ -429,68 +429,85 @@ int main(void) {
         printf("Enter your choice: ");
         scanf("%d", &choice);
 
-        switch(choice)
+        switch (choice)
         {
-            case 1: display(arr1);
-                break;
-            case 2: printf("Enter an item and index: ");
-                scanf("%d%d", &item, &index);
-                insert(&arr1, index, item);
-                break;
-            case 3: printf("Enter an index: ");
-                scanf("%d", &index);
-                printf("The deleted item is %d\n", delete_item(&arr1, index));
-                break;
-            case 4: printf("Is the array sorted? 0: No | 1: Yes: ");
-                scanf("%d", &sorted);
-                if (sorted == 0)
-                {
-                    printf("Enter the item: ");
-                    scanf("%d", &item);
-                    printf("Found at index: %d\n", linear_search(arr1, item));
-                }
-                else
-                {
-                    printf("Enter the item: ");
-                    scanf("%d", &item);
-                    printf("Found at index: %d\n", binary_search(arr1, item));
-                }
-                break;
-            case 5: printf("The sum is %d\n", sum(arr1));
-                break;
-            case 6: printf("Enter the item: ");
+        case 1:
+            display(arr1);
+            break;
+        case 2:
+            printf("Enter an item and index: ");
+            scanf("%d%d", &item, &index);
+            insert(&arr1, index, item);
+            break;
+        case 3:
+            printf("Enter an index: ");
+            scanf("%d", &index);
+            printf("The deleted item is %d\n", delete_item(&arr1, index));
+            break;
+        case 4:
+            printf("Is the array sorted? 0: No | 1: Yes: ");
+            scanf("%d", &sorted);
+            if (sorted == 0)
+            {
+                printf("Enter the item: ");
                 scanf("%d", &item);
-                append(&arr1, item);
-                break;
-            case 7: printf("Enter an index: ");
-                scanf("%d", &index);
-                printf("Got: %d\n", get(arr1, index));
-                break;
-            case 8: printf("Enter the item: ");
+                printf("Found at index: %d\n", linear_search(arr1, item));
+            }
+            else
+            {
+                printf("Enter the item: ");
                 scanf("%d", &item);
-                printf("Enter an index: ");
-                scanf("%d", &index);
-                set(&arr1, index, item);
-                break;
-            case 9: printf("Max: %d\n", max(arr1));
-                break;
-            case 10: printf("Min: %d\n", min(arr1));
-                break;
-            case 11: printf("Average: %.2f\n", average(arr1, arr1.length));
-                break;
-            case 12: reverse(&arr1);
-                break;
-            case 13: reverse_swap(&arr1);
-                break;
-            case 14: printf("Enter the item: ");
-                scanf("%d", &item);
-                insert_sort(&arr1, item);
-            case 15: printf("%d\n", is_sorted(arr1));
-                break;
-            case 16: neg_left_side(&arr1);
-                break;
-            case 17: printf("Length: %d\n", arr1.length);
-                break;
+                printf("Found at index: %d\n", binary_search(arr1, item));
+            }
+            break;
+        case 5:
+            printf("The sum is %d\n", sum(arr1));
+            break;
+        case 6:
+            printf("Enter the item: ");
+            scanf("%d", &item);
+            append(&arr1, item);
+            break;
+        case 7:
+            printf("Enter an index: ");
+            scanf("%d", &index);
+            printf("Got: %d\n", get(arr1, index));
+            break;
+        case 8:
+            printf("Enter the item: ");
+            scanf("%d", &item);
+            printf("Enter an index: ");
+            scanf("%d", &index);
+            set(&arr1, index, item);
+            break;
+        case 9:
+            printf("Max: %d\n", max(arr1));
+            break;
+        case 10:
+            printf("Min: %d\n", min(arr1));
+            break;
+        case 11:
+            printf("Average: %.2f\n", average(arr1, arr1.length));
+            break;
+        case 12:
+            reverse(&arr1);
+            break;
+        case 13:
+            reverse_swap(&arr1);
+            break;
+        case 14:
+            printf("Enter the item: ");
+            scanf("%d", &item);
+            insert_sort(&arr1, item);
+        case 15:
+            printf("%d\n", is_sorted(arr1));
+            break;
+        case 16:
+            neg_left_side(&arr1);
+            break;
+        case 17:
+            printf("Length: %d\n", arr1.length);
+            break;
         }
     } while (choice < 18);
 

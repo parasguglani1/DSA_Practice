@@ -4,11 +4,12 @@ using namespace std;
 template <typename T>
 class Stack
 {
-    private:
-    T* stack;
+private:
+    T *stack;
     int top;
     int size;
-    public:
+
+public:
     Stack()
     {
         stack = NULL;
@@ -28,12 +29,12 @@ class Stack
 template <typename T>
 Stack<T>::Stack(int maxSize)
 {
-    if(maxSize > 0)
+    if (maxSize > 0)
         size = maxSize;
     else
     {
         size = 10;
-        cout<<"Default size set due to invalid entry\n";
+        cout << "Default size set due to invalid entry\n";
     }
     stack = new T[size];
     top = -1;
@@ -42,9 +43,9 @@ Stack<T>::Stack(int maxSize)
 template <typename T>
 void Stack<T>::push(T toInsert)
 {
-    if(top == size) //cannot use isFull() otherwise we would fill only size-1 elements
+    if (top == size) // cannot use isFull() otherwise we would fill only size-1 elements
     {
-        cout<<"Cannot insert element due to overflow\n";
+        cout << "Cannot insert element due to overflow\n";
         return;
     }
     stack[++top] = toInsert;
@@ -54,10 +55,10 @@ template <typename T>
 T Stack<T>::pop()
 {
     T var;
-    if(isEmpty())
+    if (isEmpty())
     {
-        cout<<"Cannot pop due to underflow\n";
-        return var; //some junk
+        cout << "Cannot pop due to underflow\n";
+        return var; // some junk
     }
     return stack[top--];
 }
@@ -66,27 +67,27 @@ template <typename T>
 T Stack<T>::peek(int index)
 {
     T var;
-    if(index == 1)
+    if (index == 1)
         return stackTop();
-    if(top - index + 1 >= 0)
+    if (top - index + 1 >= 0)
         return stack[top - index + 1];
     else
-        return var; //some junk
+        return var; // some junk
 }
 
 template <typename T>
 T Stack<T>::stackTop()
 {
     T var;
-    if(!isEmpty())
+    if (!isEmpty())
         return stack[top];
-    return var; //some junk
+    return var; // some junk
 }
 
 template <typename T>
 bool Stack<T>::isFull()
 {
-    if(top == size-1)
+    if (top == size - 1)
         return true;
     return false;
 }
@@ -94,7 +95,7 @@ bool Stack<T>::isFull()
 template <typename T>
 bool Stack<T>::isEmpty()
 {
-    if(top == -1)
+    if (top == -1)
         return true;
     return false;
 }
@@ -113,20 +114,20 @@ Stack<T>::~Stack()
     cout<<"Stack contents at the end: ";
     while(top > -1)
         cout<<stack[top--]<<" ";*/
-    delete []stack;
-    cout<<"Stack object destroyed\n";
+    delete[] stack;
+    cout << "Stack object destroyed\n";
 }
 
 int initializer()
 {
     int var;
-    while(true)
+    while (true)
     {
-        cout<<"Enter the maximum size of the stack: ";
-        cin>>var;
-        if(var > 0)
+        cout << "Enter the maximum size of the stack: ";
+        cin >> var;
+        if (var > 0)
             break;
-        cout<<"Invalid input, retry with a positive number\n";
+        cout << "Invalid input, retry with a positive number\n";
     }
     return var;
 }

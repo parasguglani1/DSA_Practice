@@ -144,5 +144,4 @@ ostream &operator<<(ostream &out, Queue<T> &q)
     return out;
 }
 
-
-//TODO implement queue using stack
+// TODO implement queue using stack

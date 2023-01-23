@@ -1,22 +1,23 @@
-//Implementing stacks using a linked list
+// Implementing stacks using a linked list
 #include <iostream>
 using namespace std;
 
 template <typename T>
 class Node
 {
-    public:
+public:
     T data;
-    Node* next;
+    Node *next;
 };
 
 template <typename T>
 class Stack
 {
-    private:
-    Node<T>* top;
+private:
+    Node<T> *top;
     int len;
-    public:
+
+public:
     Stack()
     {
         top = NULL;
@@ -28,21 +29,21 @@ class Stack
     T stackTop();
     bool isEmpty();
     bool isFull();
-    int getLength(){return len;}
+    int getLength() { return len; }
     ~Stack();
     template <typename U>
-    friend ostream& operator <<(ostream&, Stack<U>&);
+    friend ostream &operator<<(ostream &, Stack<U> &);
 };
 
 template <typename T>
 void Stack<T>::push(T toInsert)
 {
-    if(isFull())
+    if (isFull())
     {
-        cout<<"Cannot insert, Stack Overflow\n";
+        cout << "Cannot insert, Stack Overflow\n";
         return;
     }
-    Node<T>* newNode = new Node<T>;
+    Node<T> *newNode = new Node<T>;
     newNode->data = toInsert;
     newNode->next = top;
     top = newNode;
@@ -53,12 +54,12 @@ template <typename T>
 T Stack<T>::pop()
 {
     T var;
-    if(isEmpty())
+    if (isEmpty())
     {
-        cout<<"Cannot pop due to underflow\n";
-        return var; //some junk
+        cout << "Cannot pop due to underflow\n";
+        return var; // some junk
     }
-    Node<T>* ptr = top;
+    Node<T> *ptr = top;
     top = top->next;
     T toRet = ptr->data;
     delete ptr;
@@ -70,25 +71,25 @@ template <typename T>
 T Stack<T>::peek(int index)
 {
     T var;
-    if(index == 1)
+    if (index == 1)
         return stackTop();
-    if(index > 0)
+    if (index > 0)
     {
-        Node<T>* ptr = top;
-        for(int i = 1; i <= index-1 && ptr; i++)
+        Node<T> *ptr = top;
+        for (int i = 1; i <= index - 1 && ptr; i++)
             ptr = ptr->next;
-        if(ptr)
+        if (ptr)
             return ptr->data;
         else
         {
-            cout<<"Invalidly large index\n";
-            return var; //some junk
+            cout << "Invalidly large index\n";
+            return var; // some junk
         }
     }
     else
     {
-        cout<<"Invalidly small index\n";
-        return var; //some junk
+        cout << "Invalidly small index\n";
+        return var; // some junk
     }
 }
 
@@ -96,19 +97,19 @@ template <typename T>
 T Stack<T>::stackTop()
 {
     T var;
-    if(!isEmpty())
+    if (!isEmpty())
         return top->data;
-    return var; //some junk
+    return var; // some junk
 }
 
 template <typename T>
 bool Stack<T>::isFull()
 {
     bool b;
-    Node<T>* t = new Node<T>;
-    if(t == NULL)
+    Node<T> *t = new Node<T>;
+    if (t == NULL)
         b = true;
-    else 
+    else
         b = false;
     delete t;
     return b;
@@ -117,7 +118,7 @@ bool Stack<T>::isFull()
 template <typename T>
 bool Stack<T>::isEmpty()
 {
-    if(top == NULL)
+    if (top == NULL)
         return true;
     return false;
 }
@@ -125,35 +126,35 @@ bool Stack<T>::isEmpty()
 template <typename T>
 Stack<T>::~Stack()
 {
-    Node<T>* ptr;
-    while(top)
+    Node<T> *ptr;
+    while (top)
     {
         ptr = top;
         top = top->next;
         delete ptr;
     }
-    //cout<<"Stack object destructed\n";
+    // cout<<"Stack object destructed\n";
 }
 
 template <typename T>
-ostream& operator <<(ostream& out, Stack<T>& st)
+ostream &operator<<(ostream &out, Stack<T> &st)
 {
-    Node<T>* ptr = st.top;
-    while(ptr)
+    Node<T> *ptr = st.top;
+    while (ptr)
     {
-        out<<ptr->data<<" ";
+        out << ptr->data << " ";
         ptr = ptr->next;
     }
     return out;
 }
 
 template <>
-ostream& operator <<(ostream& out, Stack<string>& st)
+ostream &operator<<(ostream &out, Stack<string> &st)
 {
-    Node<string>* ptr = st.top;
-    while(ptr)
+    Node<string> *ptr = st.top;
+    while (ptr)
     {
-        out<<ptr->data<<"\n";
+        out << ptr->data << "\n";
         ptr = ptr->next;
     }
     return out;

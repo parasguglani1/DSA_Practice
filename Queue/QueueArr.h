@@ -1,21 +1,22 @@
-//Queue implemented using an array with two pointers
+// Queue implemented using an array with two pointers
 #include <iostream>
 using namespace std;
 
 template <typename T>
 class Queue
 {
-    private:
-    T* Q;
+private:
+    T *Q;
     int front;
     int rear;
     int size;
-    public:
+
+public:
     Queue()
     {
         Q = NULL;
         front = rear = -1;
-        size = 10; //default size
+        size = 10; // default size
     }
     Queue(int);
     void enqueue(T);
@@ -26,13 +27,13 @@ class Queue
     T atRear();
     ~Queue();
     template <typename U>
-    friend ostream& operator <<(ostream&, Queue<U>&);
+    friend ostream &operator<<(ostream &, Queue<U> &);
 };
 
 template <typename T>
-Queue<T>::Queue(int size):Queue()
+Queue<T>::Queue(int size) : Queue()
 {
-    if(size > 0)
+    if (size > 0)
         this->size = size;
     Q = new T[this->size];
 }
@@ -40,7 +41,7 @@ Queue<T>::Queue(int size):Queue()
 template <typename T>
 bool Queue<T>::isEmpty()
 {
-    if(front == rear)
+    if (front == rear)
         return true;
     return false;
 }
@@ -48,7 +49,7 @@ bool Queue<T>::isEmpty()
 template <typename T>
 bool Queue<T>::isFull()
 {
-    if(rear == size-1)
+    if (rear == size - 1)
         return true;
     return false;
 }
@@ -56,9 +57,9 @@ bool Queue<T>::isFull()
 template <typename T>
 void Queue<T>::enqueue(T toInsert)
 {
-    if(isFull())
+    if (isFull())
     {
-        cout<<"Cannot insert element since queue is full\n";
+        cout << "Cannot insert element since queue is full\n";
         return;
     }
     Q[++rear] = toInsert;
@@ -68,9 +69,9 @@ template <typename T>
 T Queue<T>::dequeue()
 {
     T var;
-    if(isEmpty())
+    if (isEmpty())
     {
-        cout<<"Cannot delete element since queue is empty\n";
+        cout << "Cannot delete element since queue is empty\n";
         return var;
     }
     return Q[++front];
@@ -80,21 +81,21 @@ template <typename T>
 T Queue<T>::atFront()
 {
     T var;
-    if(isEmpty())
+    if (isEmpty())
     {
-        cout<<"Cannot return element since queue is empty\n";
+        cout << "Cannot return element since queue is empty\n";
         return var;
     }
-    return Q[front+1];
+    return Q[front + 1];
 }
 
 template <typename T>
 T Queue<T>::atRear()
 {
     T var;
-    if(isEmpty())
+    if (isEmpty())
     {
-        cout<<"Cannot return element since queue is empty\n";
+        cout << "Cannot return element since queue is empty\n";
         return var;
     }
     return Q[rear];
@@ -104,20 +105,20 @@ template <typename T>
 Queue<T>::~Queue()
 {
     front = rear = size = 0;
-    delete []Q;
-    cout<<"Queue object destructed\n";
+    delete[] Q;
+    cout << "Queue object destructed\n";
 }
 
 template <typename T>
-ostream& operator <<(ostream& out, Queue<T>& q)
+ostream &operator<<(ostream &out, Queue<T> &q)
 {
-    if(q.isEmpty())
-        out<<"Cannot print elements since queue is empty\n";
+    if (q.isEmpty())
+        out << "Cannot print elements since queue is empty\n";
     else
     {
-        for(int i = q.front+1; i <= q.rear; i++)
-            out<<q.Q[i]<<" ";
-        out<<"\n";
+        for (int i = q.front + 1; i <= q.rear; i++)
+            out << q.Q[i] << " ";
+        out << "\n";
     }
     return out;
 }
