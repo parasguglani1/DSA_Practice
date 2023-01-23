@@ -1,5 +1,7 @@
 // Student exercise to display numbers from an unsorted array that sum up to 'K'
 #include <iostream>
+#include <bits/stdc++.h>
+
 using namespace std;
 
 void checkSum(int A[], int n, int k)

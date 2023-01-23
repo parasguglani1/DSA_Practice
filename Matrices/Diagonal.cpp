@@ -1,6 +1,7 @@
 // C++ equivalent of the last program
 // Implementing a 2D diagonal matrix using a structure in C
 #include <iostream>
+#include <limits.h>
 using namespace std;
 
 class DiagMat

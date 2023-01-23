@@ -1,5 +1,6 @@
 // Column-major implementation of lower triangular matrix in C++
 #include <iostream>
+#include <limits.h>
 using namespace std;
 
 class LowTri

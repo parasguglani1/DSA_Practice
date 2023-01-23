@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <limits.h> 
+#include <limits.h>
 
 struct Arr
 {
@@ -34,7 +34,7 @@ void extend(struct Arr* x)
 
 void append(struct Arr* x)
 {
-    extend(x);    
+    extend(x);
     printf("Enter %dth element: ", x->length);
     scanf("%d",&x->ptr[x->length]);
     x->length++;
@@ -44,7 +44,7 @@ void display(struct Arr x)
 {
     if(x.length == 0)
         printf("Array is empty\n");
-    else 
+    else
     {
         int i;
         printf("The array contents are: ");
@@ -78,7 +78,7 @@ int delete(struct Arr* x, int pos)
         //printf("Array is empty\n");
         return -1; //to signify invalidity
     }
-    else 
+    else
     {
         int i, del = x->ptr[pos];
         for(i = pos; i < x->length-1; i++) //no element to copy for x->ptr[length-1]
@@ -164,7 +164,7 @@ int set(struct Arr* x, int index, int element)
         //printf("Array is empty\n");
         return -1; //to signify invalidity
     }
-    else 
+    else
     {
         int curr = x->ptr[index];
         x->ptr[index] = element;
@@ -211,7 +211,7 @@ int rSum(struct Arr x, int index)
         return INT_MIN;
     if(index < 0)
         return 0;
-    else 
+    else
         return x.ptr[index]+rSum(x, index-1);
 }
 
@@ -226,7 +226,7 @@ void reverse(struct Arr* x)
 {
     if(x->length == 0)
         printf("Array is empty\n");
-    else 
+    else
     {
         int i, j, temp;
         for(i = 0, j = x->length - 1; i < j; i++, j--)
@@ -257,7 +257,7 @@ void lShift(struct Arr* x)
 {
     if(x->length == 0)
         printf("Array is empty\n");
-    else 
+    else
     {
         int i;
         for(i = 0; i < x->length - 1; i++)
@@ -270,7 +270,7 @@ void lRotate(struct Arr* x)
 {
     if(x->length == 0)
         printf("Array is empty\n");
-    else 
+    else
     {
         int i, ind0 = x->ptr[0];
         for(i = 0; i < x->length - 1; i++)
@@ -296,7 +296,7 @@ void rRotate(struct Arr* x)
 {
     if(x->length == 0)
         printf("Array is empty\n");
-    else 
+    else
     {
         int i, indL = x->ptr[x->length - 1];
         for(i = x->length - 1; i > 0; i--)
@@ -321,7 +321,7 @@ void insertSorted(struct Arr* x, int toInsert)
 {
     if(x->length == 0)
         printf("Array is empty\n");
-    else 
+    else
     {
         extend(x);
         int i = x->length - 1;
@@ -388,14 +388,14 @@ struct Arr* mergeSorted(struct Arr a, struct Arr b)
     {
         if(a.ptr[i] < b.ptr[j])
             c->ptr[k++] = a.ptr[i++];
-        else 
+        else
             c->ptr[k++] = b.ptr[j++];
     }
     for(; i < a.length; i++)
         c->ptr[k++] = a.ptr[i];
     for(; j < b.length; j++)
         c->ptr[k++] = b.ptr[j];
-    
+
     c->length = k;
     return c;
 }
@@ -425,11 +425,11 @@ struct Arr* Union(struct Arr a, struct Arr b)
         for(; j < b.length; j++)
             c->ptr[k++] = b.ptr[j];
     }
-    else //naïve implementation 
+    else //naïve implementation
     {
         for(; i < a.length; i++)
             c->ptr[k++] = a.ptr[i]; //copy everything from first array
-        
+
         for(; j < b.length; j++)
         {
             if(lsearch(&a, b.ptr[j], 'X') == -1) //copy only if dissimilar
@@ -462,7 +462,7 @@ struct Arr* Intersection(struct Arr a, struct Arr b)
         }
         //No remnants to be copied
     }
-    else //naïve implementation 
+    else //naïve implementation
     {
         for(; i < a.length; i++)
             if(lsearch(&b, a.ptr[i], 'X') != -1) //if found in second array, copy
@@ -496,7 +496,7 @@ struct Arr* Difference(struct Arr a, struct Arr b)
             c->ptr[k++] = a.ptr[i];
         //remnants from second array not needed
     }
-    else //naïve implementation 
+    else //naïve implementation
     {
         for(; i < a.length; i++)
             if(lsearch(&b, a.ptr[i], 'X') == -1) //if not found in second array, copy
@@ -521,7 +521,7 @@ void initializer(struct Arr* x)
         printf("Invalid input, try again with a whole number\n");
     }
     for(i = 0; i < n; i++)
-        append(x);   
+        append(x);
 }
 
 void freer(struct Arr* x)
@@ -541,7 +541,7 @@ int main()
     printf("\t6. Obtain the largest/smallest element of the array\n\t7. Obtain the sum/average of all elements\n");
     printf("\t8. Reverse the array\n\t9. Shift/rotate the array\n\t10. Insert an element in a sorted list\n");
     printf("\t11. Check if the array is sorted\n\t12. Shift all negative elements to the left of the array\n");
-    printf("\t13. Merge two sorted arrays into one\n\t14. Undertake set operations\n");        
+    printf("\t13. Merge two sorted arrays into one\n\t14. Undertake set operations\n");
     printf("\t100. Display the array\n\t0. Quit the menu\n");
     printf("---------------------------------------\n");
     while(1)
@@ -556,33 +556,33 @@ int main()
             case 2:
             {
                 //input position and element
-                int pos, element;                    
+                int pos, element;
                 while(1)
-                {                    
+                {
                     if(A->length == 0)
                     {
                         printf("Array is empty, enter the first element\n");
                         pos = 0;
                         break;
                     }
-                    else 
+                    else
                     {
                         printf("Enter the position for insertion: ");
                         scanf("%d", &pos);
-                        
+
                         if(pos == A->length) //a corner case
                             printf("New element will be appended to the end\n");
 
                         if(pos <= A->length && pos >= 0)
                             break;
-        
+
                         printf("Invalid input, enter a position between 0 and %d\n", A->length);
                     }
                 }
                 printf("Enter the element to be inserted: ");
                 scanf("%d", &element);
                 insert(A, pos, element);
-            
+
                 //validation
                 printf("'%d' has been inserted at %dth position\n", A->ptr[pos], pos);
                 break;
@@ -591,7 +591,7 @@ int main()
             {
                 if(A->length == 0)
                     printf("Invalid request, array is empty\n");
-                else 
+                else
                 {
                     int key, index; char choice, c;
                     while(1)
@@ -617,7 +617,7 @@ int main()
                         choice = 'L';
                     }
                     index = (choice == 'L') ? lsearch(A,key, c) : bSearch(*A, key);
-                
+
                     if(index == -1)
                         printf("%d is not a part of the array\n", key);
                     else
@@ -629,9 +629,9 @@ int main()
             {
                 if(A->length == 0)
                     printf("Invalid request, array is empty\n");
-                else 
+                else
                 {
-                    int pos; 
+                    int pos;
                     while(1)
                     {
                         printf("Enter the position for deletion: ");
@@ -651,7 +651,7 @@ int main()
             {
                 if(A->length == 0)
                     printf("Invalid request, array is empty\n");
-                else 
+                else
                 {
                     char c; int pos;
                     while(1)
@@ -666,9 +666,9 @@ int main()
                     {
                         if(c == 'G')
                             printf("Enter the index for which the element is sought: ");
-                        else 
+                        else
                             printf("Enter the index at which the element is to be replaced: ");
-                        
+
                         scanf("%d", &pos);
                         if(pos >= 0 && pos < A->length)
                             break;
@@ -676,7 +676,7 @@ int main()
                     }
                     if(c == 'G')
                         printf("Element at index %d is '%d'\n", pos, get(*A, pos));
-                    else 
+                    else
                     {
                         int toSet;
                         printf("Enter the new element: ");
@@ -691,7 +691,7 @@ int main()
             {
                 if(A->length == 0)
                     printf("Invalid request, array is empty\n");
-                else 
+                else
                 {
                     char c;
                     while(1)
@@ -704,7 +704,7 @@ int main()
                     }
                     if(c == 'L')
                         printf("'%d' is the largest element, its index is %d\n", (c == 'L')?max(*A):min(*A), lsearch(A, (c == 'L')?max(*A):min(*A), 'X'));
-                    else 
+                    else
                         printf("'%d' is the smallest element, its index is %d\n", (c == 'L')?max(*A):min(*A), lsearch(A, (c == 'L')?max(*A):min(*A), 'X'));
                 }
                 break;
@@ -713,7 +713,7 @@ int main()
             {
                 if(A->length == 0)
                     printf("Invalid request, array is empty\n");
-                else 
+                else
                 {
                     char choice, c;
                     while(1)
@@ -745,7 +745,7 @@ int main()
             {
                 if(A->length == 0)
                     printf("Invalid request, array is empty\n");
-                else 
+                else
                 {
                     char choice;
                     while(1)
@@ -765,7 +765,7 @@ int main()
             {
                 if(A->length == 0)
                     printf("Invalid request, array is empty\n");
-                else 
+                else
                 {
                     char choice; int numShifts;
                     while(1)
@@ -811,7 +811,7 @@ int main()
             {
                 if(A->length == 0)
                     printf("Invalid request, array is empty\n");
-                else 
+                else
                 {
                     if(isSorted(*A))
                     {
@@ -832,11 +832,11 @@ int main()
             {
                 if(A->length == 0)
                     printf("Invalid request, array is empty\n");
-                else 
+                else
                 {
                     if(isSorted(*A))
                         printf("Array is sorted\n");
-                    else 
+                    else
                         printf("Array is not sorted\n");
                 }
                 break;
@@ -845,7 +845,7 @@ int main()
             {
                 if(A->length == 0)
                     printf("Invalid request, array is empty\n");
-                else 
+                else
                 {
                     negLeft(A);
                     printf("Operation executed successfully\n");
@@ -856,7 +856,7 @@ int main()
             {
                 if(A->length == 0)
                     printf("Invalid request, first array is empty\n");
-                else 
+                else
                 {
                     struct Arr* B = (struct Arr*)malloc(sizeof(struct Arr)); B->length = 0;
                     if(isSorted(*A))
@@ -870,7 +870,7 @@ int main()
                             printf("Second array: "); display(*B);
                             printf("Merged array: "); display(*mergeSorted(*A, *B)); //can also use display(*mergeSorted(*A, *B))
                         }
-                        else 
+                        else
                             printf("Operation is invalid for unsorted arrays\n");
                         freer(B);
                     }
@@ -883,14 +883,14 @@ int main()
             {
                 if(A->length == 0)
                     printf("Invalid request, first array is empty\n");
-                else 
+                else
                 {
                     struct Arr* B = (struct Arr*)malloc(sizeof(struct Arr)); B->length = 0;
                     char c; int var, var1;
                     initializer(B); //initialized
                     while(1)
                     {
-                        printf("Enter U for union, I for intersection, D for difference and S for verifying set membership: "); 
+                        printf("Enter U for union, I for intersection, D for difference and S for verifying set membership: ");
                         scanf(" %c", &c);
                         if(c == 'U' || c == 'I' || c == 'D' || c == 'S')
                             break;
@@ -910,7 +910,7 @@ int main()
                         //printing paradigm
                         if(c == 'U')
                         {
-                            printf("Union: "); 
+                            printf("Union: ");
                             display(*Union(*A, *B));
                         }
                         else if (c == 'I')
@@ -944,7 +944,7 @@ int main()
                         }
                         printf("Enter a member to be searched: ");
                         scanf("%d", &var1);
-                        
+
                         var = (i == 1)?lsearch(A, var1, 'X'):lsearch(B, var1, 'X');
                         if(var == -1)
                             printf("%d is not a member of the set\n", var1);
@@ -970,9 +970,9 @@ int main()
         printf("---------------------------------------\n");
         if(choice == 0)
             break;
-        else 
+        else
             printf("Scroll up to refer to the options\n");
     }
-    freer(A);    
+    freer(A);
     return 0;
 }

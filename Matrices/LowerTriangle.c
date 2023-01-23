@@ -1,6 +1,7 @@
 //Row-major implementation of lower triangular matrix in C
 #include <stdio.h>
 #include <stdlib.h>
+#include <limits.h>
 
 struct LowTri
 {

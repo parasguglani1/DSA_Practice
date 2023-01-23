@@ -1,5 +1,6 @@
 // Student Exercise to print frequency of duplicates in an unsorted array
 #include <iostream>
+#include <bits/stdc++.h>
 using namespace std;
 
 bool linSearch(int A[], int n, int *k)
