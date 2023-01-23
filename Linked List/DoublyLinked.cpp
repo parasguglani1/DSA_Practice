@@ -1,69 +1,70 @@
-//Doubly-linked list in C++
-//Improved speeds for insertion and deletion implemented using tail pointer
+// Doubly-linked list in C++
+// Improved speeds for insertion and deletion implemented using tail pointer
 #include <iostream>
 using namespace std;
 
 template <typename T>
 class Node
 {
-    public:
+public:
     T data;
-    Node* prev;
-    Node* next;
+    Node *prev;
+    Node *next;
 };
 
 template <typename T>
 class Double
 {
-    private:
-    Node<T>* head;
-    Node<T>* tail;
-    public:
-    Double(){head = tail = NULL;}
-    Double(T*, int);
+private:
+    Node<T> *head;
+    Node<T> *tail;
+
+public:
+    Double() { head = tail = NULL; }
+    Double(T *, int);
     void insertEnd(T);
     void insertGen(T, int);
     int countNodes();
-    T* deleteNode(int);
+    T *deleteNode(int);
     void reverse();
     template <typename U>
-    friend ostream& operator <<(ostream&, Double<U>&);
+    friend ostream &operator<<(ostream &, Double<U> &);
     ~Double();
 };
 
 template <typename T>
-Double<T>::Double(T* arr, int n)
+Double<T>::Double(T *arr, int n)
 {
     head = tail = NULL;
-    for(int i = 0; i < n; i++)
+    for (int i = 0; i < n; i++)
         insertEnd(arr[i]);
 }
 
 template <typename T>
 void Double<T>::insertEnd(T toInsert)
 {
-    Node<T>* newNode = new Node<T>;
+    Node<T> *newNode = new Node<T>;
     newNode->data = toInsert;
-    if(head == NULL)
+    if (head == NULL)
     {
         newNode->prev = newNode->next = NULL;
         head = tail = newNode;
     }
     else
     {
-       newNode->next = tail->next; //NULL
-       newNode->prev = tail; 
-       tail->next = newNode;
-       tail = newNode;
+        newNode->next = tail->next; // NULL
+        newNode->prev = tail;
+        tail->next = newNode;
+        tail = newNode;
     }
 }
 
 template <typename T>
 int Double<T>::countNodes()
 {
-    Node<T>* ptr = head; //can traverse backwards using tail as well
+    Node<T> *ptr = head; // can traverse backwards using tail as well
     int len = 0;
-    while(ptr)
+    while (ptr)
     {
         ptr = ptr->next;
         len++;
@@ -75,16 +76,16 @@ template <typename T>
 void Double<T>::insertGen(T toInsert, int pos)
 {
     int length = countNodes();
-    if(pos < 0 || pos > length)
+    if (pos < 0 || pos > length)
     {
-        cout<<"Invalid insertion position\n";
+        cout << "Invalid insertion position\n";
         return;
     }
-    Node<T>* newNode = new Node<T>;
+    Node<T> *newNode = new Node<T>;
     newNode->data = toInsert;
-    if(pos == 0)
+    if (pos == 0)
     {
-        if(head)
+        if (head)
         {
             newNode->prev = NULL;
             newNode->next = head;
@@ -99,7 +100,7 @@ void Double<T>::insertGen(T toInsert, int pos)
     }
     else
     {
-        if(pos == length)
+        if (pos == length)
         {
             newNode->prev = tail;
             newNode->next = NULL;
@@ -108,11 +109,11 @@ void Double<T>::insertGen(T toInsert, int pos)
         }
         else
         {
-            Node<T>* ptr;
-            if(pos <= length/2)
+            Node<T> *ptr;
+            if (pos <= length / 2)
             {
                 ptr = head;
-                for(int i = 1; i <= pos-1; i++)
+                for (int i = 1; i <= pos - 1; i++)
                     ptr = ptr->next;
                 newNode->next = ptr->next;
                 newNode->prev = ptr;
@@ -122,7 +123,7 @@ void Double<T>::insertGen(T toInsert, int pos)
             else
             {
                 ptr = tail;
-                for(int i = 1; i <= length-pos-1; i++)
+                for (int i = 1; i <= length - pos - 1; i++)
                     ptr = ptr->prev;
                 newNode->next = ptr;
                 newNode->prev = ptr->prev;
@@ -134,28 +135,28 @@ void Double<T>::insertGen(T toInsert, int pos)
 }
 
 template <typename T>
-T* Double<T>::deleteNode(int pos)
+T *Double<T>::deleteNode(int pos)
 {
     int length = countNodes();
-    if(pos < 1 || pos > length)
+    if (pos < 1 || pos > length)
     {
-        cout<<"Invalid deletion position\n";
+        cout << "Invalid deletion position\n";
         return NULL;
     }
-    T* var = new T;
-    Node<T>* ptr;
-    if(pos == 1)
+    T *var = new T;
+    Node<T> *ptr;
+    if (pos == 1)
     {
         ptr = head;
         head = ptr->next;
-        if(head)
+        if (head)
             head->prev = NULL;
         else
             tail = head;
     }
     else
     {
-        if(pos == length)
+        if (pos == length)
         {
             ptr = tail;
             tail = tail->prev;
@@ -163,10 +164,10 @@ T* Double<T>::deleteNode(int pos)
         }
         else
         {
-            if(pos <= length/2)
+            if (pos <= length / 2)
             {
                 ptr = head;
-                for(int i = 1; i <= pos-1; i++)
+                for (int i = 1; i <= pos - 1; i++)
                     ptr = ptr->next;
                 ptr->prev->next = ptr->next;
                 ptr->next->prev = ptr->prev;
@@ -174,7 +175,7 @@ T* Double<T>::deleteNode(int pos)
             else
             {
                 ptr = tail;
-                for(int i = 1; i <= length-pos; i++)
+                for (int i = 1; i <= length - pos; i++)
                     ptr = ptr->prev;
                 ptr->prev->next = ptr->next;
                 ptr->next->prev = ptr->prev;
@@ -189,24 +190,24 @@ T* Double<T>::deleteNode(int pos)
 template <typename T>
 void Double<T>::reverse()
 {
-    if(!head)
+    if (!head)
     {
-        cout<<"List is empty\n";
+        cout << "List is empty\n";
         return;
     }
-    if(countNodes() != 1)
+    if (countNodes() != 1)
     {
-        Node<T>* ptr = head, *temp;
+        Node<T> *ptr = head, *temp;
         tail = head;
-        while(ptr)
+        while (ptr)
         {
-            if(!ptr->next)
+            if (!ptr->next)
                 head = ptr;
-            
+
             temp = ptr->next;
             ptr->next = ptr->prev;
             ptr->prev = temp;
-            ptr = ptr->prev; //moves to the next node
+            ptr = ptr->prev; // moves to the next node
         }
     }
 }
@@ -214,35 +215,36 @@ void Double<T>::reverse()
 template <typename T>
 Double<T>::~Double()
 {
-    Node<T>* ptr = head;
-    while(ptr)
+    Node<T> *ptr = head;
+    while (ptr)
     {
-        //cout<<ptr->data<<" ";
+        // cout<<ptr->data<<" ";
         ptr = ptr->next;
         delete head;
         head = ptr;
     }
-    cout<<"Circular linked list destructed\n";
+    cout << "Circular linked list destructed\n";
 }
 
 template <typename T>
-ostream& operator <<(ostream& out, Double<T>& list)
+ostream &operator<<(ostream &out, Double<T> &list)
 {
-    Node<T>* ptr = list.head;
-    out<<"Doubly-linked list elements:\n";
-    while(ptr)
+    Node<T> *ptr = list.head;
+    out << "Doubly-linked list elements:\n";
+    while (ptr)
     {
-        out<<ptr->data<<" ";
+        out << ptr->data << " ";
         ptr = ptr->next;
     }
-    out<<"\n"<<"Doubly-linked list elements in reverse:\n";
+    out << "\n"
+        << "Doubly-linked list elements in reverse:\n";
     ptr = list.tail;
-    while(ptr)
+    while (ptr)
     {
-        out<<ptr->data<<" ";
+        out << ptr->data << " ";
         ptr = ptr->prev;
     }
-    out<<"\n";
+    out << "\n";
     return out;
 }
 
@@ -250,12 +252,12 @@ int main()
 {
     int arr[] = {10, 20, 30, 40, 50};
     Double<int> list;
-    for(int i = 0; i < 5; i++)
+    for (int i = 0; i < 5; i++)
         list.insertGen(arr[i], i);
     list.reverse();
     list.insertEnd(60);
     list.deleteNode(1);
-    cout<<list;
-    cout<<"Program terminated\n";
+    cout << list;
+    cout << "Program terminated\n";
     return 0;
 }

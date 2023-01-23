@@ -41,14 +41,13 @@ struct Card
   int rank;
 };
 
-
 int main()
 {
   // Rectangle
   struct Rectangle r = {10, 5};
-  r.length=45;
-  r.breadth=60;
-  cout<<r.length;
+  r.length = 45;
+  r.breadth = 60;
+  cout << r.length;
   // Returns 8 because r is 4 (length) + 4 (breadth)
   cout << "Size of r: " << sizeof(r) << endl;
   // The dot . operator is used to access (read/write) a member of a structure
@@ -61,9 +60,10 @@ int main()
   // Student
   struct Student s; // First student
   struct Student t; // Second student
-  s.firstName = "John"; s.lastName = "Smith"; t.age = 14;
-  cout << "First student's full name: " << s.firstName << " " <<
-    s.lastName << endl;
+  s.firstName = "John";
+  s.lastName = "Smith";
+  t.age = 14;
+  cout << "First student's full name: " << s.firstName << " " << s.lastName << endl;
   cout << "Second student's age: " << t.age << endl;
   cout << endl;
 

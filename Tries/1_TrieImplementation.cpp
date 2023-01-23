@@ -1,35 +1,42 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-class TrieNode{
-    public:
-        char data;
-        TrieNode** children;
-        bool isTerminal;
+class TrieNode
+{
+public:
+    char data;
+    TrieNode **children;
+    bool isTerminal;
 
-        TrieNode(char data){
-            this->data = data;
-            this->children = new TrieNode*[26];
-            for(int i=0; i<26; i++){
-                children[i] = NULL;
-            }
-            this->isTerminal = false;
+    TrieNode(char data)
+    {
+        this->data = data;
+        this->children = new TrieNode *[26];
+        for (int i = 0; i < 26; i++)
+        {
+            children[i] = NULL;
         }
+        this->isTerminal = false;
+    }
 };
 
-class Trie{
-    TrieNode* root;
+class Trie
+{
+    TrieNode *root;
 
-    void insert(TrieNode* root, string word){
+    void insert(TrieNode *root, string word)
+    {
         // Base Case
-        if(word.length() == 0){
+        if (word.length() == 0)
+        {
             root->isTerminal = true;
             return;
         }
         // Small Calculation
         int index = word[0] - 'a';
-        TrieNode* child= root->children[index];
-        if(root->children[index] == NULL){
+        TrieNode *child = root->children[index];
+        if (root->children[index] == NULL)
+        {
             child = new TrieNode(word[0]);
             root->children[index] = child;
         }
@@ -37,60 +44,74 @@ class Trie{
         insert(child, word.substr(1));
     }
 
-    bool search(TrieNode* root, string word){
-        if(word.length() == 0){
+    bool search(TrieNode *root, string word)
+    {
+        if (word.length() == 0)
+        {
             return root->isTerminal;
         }
-        int index = word[0]-'a';
-        TrieNode* child = root->children[index];
-        if(child == NULL){
+        int index = word[0] - 'a';
+        TrieNode *child = root->children[index];
+        if (child == NULL)
+        {
             return false;
         }
         return search(child, word.substr(1));
     }
 
-    void remove(TrieNode* root, string word){
-        if(word.length()==0){
+    void remove(TrieNode *root, string word)
+    {
+        if (word.length() == 0)
+        {
             root->isTerminal = false;
             return;
         }
-        
-        int index = word[0]-'a';
-        TrieNode* child= root->children[index];
-        if(child != NULL){
+
+        int index = word[0] - 'a';
+        TrieNode *child = root->children[index];
+        if (child != NULL)
+        {
             remove(child, word.substr(1));
         }
 
-        if(child != NULL && child->isTerminal == false){
-            for(int i=0; i<26; i++){
-                if(child->children[i] != NULL){
+        if (child != NULL && child->isTerminal == false)
+        {
+            for (int i = 0; i < 26; i++)
+            {
+                if (child->children[i] != NULL)
+                {
                     return;
                 }
             }
             delete child;
-            root->children[index]=NULL;
+            root->children[index] = NULL;
         }
     }
 
-    public:
-        Trie(){
-            root = new TrieNode('\0');
-        }
+public:
+    Trie()
+    {
+        root = new TrieNode('\0');
+    }
 
-        void insert(string word){
-            insert(root, word);
-        }
+    void insert(string word)
+    {
+        insert(root, word);
+    }
 
-        bool search(string word){
-            return search(root, word);
-        }
+    bool search(string word)
+    {
+        return search(root, word);
+    }
 
-        void remove(string word){
-            remove(root, word);
-        }
+    void remove(string word)
+    {
+        remove(root, word);
+    }
 };
 
-int main(){
+int main()
+{
     Trie t;
     t.insert("and");
     t.insert("are");

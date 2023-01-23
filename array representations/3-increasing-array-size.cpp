@@ -24,9 +24,9 @@ int main(void)
     }
     // The content is 1,2,3,4,5,0,0,0,0,0
 
-    delete []p; // Deallocate the memory you no longer need
-    p = n; // Make p point to the new array
-    n = NULL; // n will no longer point to the second array
+    delete[] p; // Deallocate the memory you no longer need
+    p = n;      // Make p point to the new array
+    n = NULL;   // n will no longer point to the second array
 
     return 0;
 }

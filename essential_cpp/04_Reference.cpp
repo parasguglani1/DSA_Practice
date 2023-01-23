@@ -1,15 +1,15 @@
 /*
  * Reference
- * 
+ *
  * A reference is simply an alias or nickname given to a variable. The refernce is denoted
  * by an ampersand symbol, &.
- * 
+ *
  * int a = 10; Variable
  * int *p = a; Pointer
  * int &r = a; Reference
- * 
+ *
  * Here, 'a' now has two names: 'a' and 'r'.
- * 
+ *
  * Conceptually, a reference does not consume memory as it merely uses the same memory as
  * what it is referring to.
  */

@@ -1,45 +1,46 @@
-//Implementing a linked list in C++
+// Implementing a linked list in C++
 #include <iostream>
 using namespace std;
 
 template <class T>
 class Node
 {
-    public:
+public:
     T data;
-    Node* next;
+    Node *next;
 };
 
 template <class T>
 class LinkedList
 {
-    private:
-    Node<T>* head;
-    Node<T>* middleR();
-    Node<T>* middleL();
-    public:
+private:
+    Node<T> *head;
+    Node<T> *middleR();
+    Node<T> *middleL();
+
+public:
     LinkedList()
     {
         head = NULL;
     }
-    LinkedList(T*, int, int);
+    LinkedList(T *, int, int);
     void insert(T, int);
     void display();
     int countNodes();
     T deleteNode(int);
-    Node<T>* middle(int); //student exercise
+    Node<T> *middle(int); // student exercise
     ~LinkedList();
 };
 
 template <class T>
-LinkedList<T>::LinkedList(T* arr, int n, int choice)
+LinkedList<T>::LinkedList(T *arr, int n, int choice)
 {
     head = NULL;
-    for(int i = 0; i < n; i++)
+    for (int i = 0; i < n; i++)
     {
-        if(choice == 1) //head
+        if (choice == 1) // head
             insert(arr[i], 0);
-        else if(choice == 2) //end
+        else if (choice == 2) // end
             insert(arr[i], i);
     }
 }
@@ -47,32 +48,32 @@ LinkedList<T>::LinkedList(T* arr, int n, int choice)
 template <class T>
 LinkedList<T>::~LinkedList()
 {
-    Node<T>* temp = head;
-    while(head)
+    Node<T> *temp = head;
+    while (head)
     {
         head = head->next;
         delete temp;
         temp = head;
     }
-    cout<<"Object deleted\n";
+    cout << "Object deleted\n";
 }
 
 template <class T>
 void LinkedList<T>::insert(T newData, int position)
 {
-    if(position < 0 || position > countNodes())
+    if (position < 0 || position > countNodes())
         return;
-    Node<T>* newNode = new Node<T>;
+    Node<T> *newNode = new Node<T>;
     newNode->data = newData;
-    if(position == 0)
+    if (position == 0)
     {
         newNode->next = head;
         head = newNode;
     }
     else
     {
-        Node<T>* temp = head;
-        for(int i = 1; i <= position - 1; i++)
+        Node<T> *temp = head;
+        for (int i = 1; i <= position - 1; i++)
             temp = temp->next;
         newNode->next = temp->next;
         temp->next = newNode;
@@ -82,9 +83,9 @@ void LinkedList<T>::insert(T newData, int position)
 template <class T>
 int LinkedList<T>::countNodes()
 {
-    Node<T>* temp = head;
+    Node<T> *temp = head;
     int count = 0;
-    while(temp)
+    while (temp)
     {
         temp = temp->next;
         count++;
@@ -95,52 +96,54 @@ int LinkedList<T>::countNodes()
 template <class T>
 void LinkedList<T>::display()
 {
-    Node<T>* temp = head;
-    cout<<"Linked list elements are: "<<"\n";
-    while(temp)
+    Node<T> *temp = head;
+    cout << "Linked list elements are: "
+         << "\n";
+    while (temp)
     {
-        cout<<temp->data<<" ";
+        cout << temp->data << " ";
         temp = temp->next;
     }
-    cout<<"\n";
+    cout << "\n";
 }
 
 template <class T>
 T LinkedList<T>::deleteNode(int position)
 {
-    if(position < 0 || position > countNodes())
+    if (position < 0 || position > countNodes())
         return 0;
-    Node<T>* temp = head, *tempPtr; T var;
-    if(position == 1)
+    Node<T> *temp = head, *tempPtr;
+    T var;
+    if (position == 1)
     {
         head = head->next;
-        var = temp->data;        
+        var = temp->data;
     }
     else
     {
         int c = 1;
-        while(c != position)
+        while (c != position)
         {
             tempPtr = temp;
             temp = temp->next;
             c++;
         }
         var = temp->data;
-        tempPtr->next = temp->next; 
+        tempPtr->next = temp->next;
     }
     delete temp;
     return var;
 }
 
 template <class T>
-Node<T>* LinkedList<T>::middleR()
+Node<T> *LinkedList<T>::middleR()
 {
-    Node<T>* ptr, *q;
+    Node<T> *ptr, *q;
     ptr = q = head;
-    while(q)
+    while (q)
     {
         q = q->next;
-        if(q)
+        if (q)
         {
             q = q->next;
             ptr = ptr->next;
@@ -150,26 +153,27 @@ Node<T>* LinkedList<T>::middleR()
 }
 
 template <typename T>
-Node<T>* LinkedList<T>::middleL()
+Node<T> *LinkedList<T>::middleL()
 {
-    Node<T>* ptr; int l = 0;
-    Node<T>* arr[countNodes()];
+    Node<T> *ptr;
+    int l = 0;
+    Node<T> *arr[countNodes()];
     ptr = head;
-    while(ptr)
+    while (ptr)
     {
         arr[l] = ptr;
         ptr = ptr->next;
         l++;
     }
-    if(l%2 == 0)
-        return arr[(l-1)/2];
-    return arr[l/2];
+    if (l % 2 == 0)
+        return arr[(l - 1) / 2];
+    return arr[l / 2];
 }
 
 template <typename T>
-Node<T>* LinkedList<T>::middle(int choice)
+Node<T> *LinkedList<T>::middle(int choice)
 {
-    if(choice == 0)
+    if (choice == 0)
         return middleL();
     else
         return middleR();
@@ -178,29 +182,29 @@ Node<T>* LinkedList<T>::middle(int choice)
 int main()
 {
     int n;
-    while(true)
+    while (true)
     {
-        cout<<"Enter the number of elements you intend to insert: ";
-        cin>>n; 
-        if(n > 0)
+        cout << "Enter the number of elements you intend to insert: ";
+        cin >> n;
+        if (n > 0)
             break;
-        cout<<"Invalid input, retry with a positive number\n";
+        cout << "Invalid input, retry with a positive number\n";
     }
     int arr[n];
-    cout<<"Enter the elements: ";
-    for(int i = 0; i < n; i++)
-        cin>>arr[i];
-    
+    cout << "Enter the elements: ";
+    for (int i = 0; i < n; i++)
+        cin >> arr[i];
+
     LinkedList<int> list(arr, n, 2);
     list.display();
-    
-    if(list.countNodes()%2 == 0)
+
+    if (list.countNodes() % 2 == 0)
     {
-        cout<<"Element in the middle-left: "<<list.middle(0)->data<<"\n";
-        cout<<"Element in the middle-right: "<<list.middle(1)->data<<"\n";
+        cout << "Element in the middle-left: " << list.middle(0)->data << "\n";
+        cout << "Element in the middle-right: " << list.middle(1)->data << "\n";
     }
     else
-        cout<<"Element in the middle: "<<list.middle(2)->data<<"\n";
-    
+        cout << "Element in the middle: " << list.middle(2)->data << "\n";
+
     return 0;
 }

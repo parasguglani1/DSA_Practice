@@ -1,4 +1,4 @@
-/* 
+/*
 Chapter Assignment
 Problem Statement: Palindrome LinkedList
 Problem Level: EASY
@@ -42,7 +42,7 @@ int main()
     while (t--)
     {
         Node *head = inputTillNegativeOne();
-        bool flag=ispalindrome(head);
+        bool flag = ispalindrome(head);
         if (flag)
             cout << "true" << endl;
         else

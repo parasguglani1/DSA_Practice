@@ -1,21 +1,22 @@
-//CIrcular doubly-linked list in C++
-//With efficient insertion and deletion with usage of pointer to tail
+// CIrcular doubly-linked list in C++
+// With efficient insertion and deletion with usage of pointer to tail
 #include <iostream>
 using namespace std;
 
 template <typename T>
 class CircularDouble
 {
-    private:
+private:
     class Node;
-    Node* head;
-    Node* tail;
-    public:
-    CircularDouble(){head = tail = NULL;}
-    CircularDouble(T*, int);
+    Node *head;
+    Node *tail;
+
+public:
+    CircularDouble() { head = tail = NULL; }
+    CircularDouble(T *, int);
     void insert(T, int);
     void display();
-    T* deleteNode(int);
+    T *deleteNode(int);
     int countNodes();
     ~CircularDouble();
 };
@@ -23,24 +24,24 @@ class CircularDouble
 template <typename T>
 class CircularDouble<T>::Node
 {
-    public:
+public:
     T data;
-    Node* prev;
-    Node* next;
+    Node *prev;
+    Node *next;
 };
 
 template <typename T>
 int CircularDouble<T>::countNodes()
 {
-    if(!head)
+    if (!head)
         return 0;
     int len = 0;
-    Node* ptr = head;
-    do 
+    Node *ptr = head;
+    do
     {
         ptr = ptr->next;
         len++;
-    }while(ptr != head);
+    } while (ptr != head);
     return len;
 }
 
@@ -48,16 +49,16 @@ template <typename T>
 void CircularDouble<T>::insert(T toInsert, int pos)
 {
     int length = countNodes();
-    if(pos < 0 || pos > length)
+    if (pos < 0 || pos > length)
     {
-        cout<<"Invalid inserrtion index\n";
+        cout << "Invalid inserrtion index\n";
         return;
     }
-    Node* newNode = new Node;
+    Node *newNode = new Node;
     newNode->data = toInsert;
-    if(pos == 0)
+    if (pos == 0)
     {
-        if(head == NULL)
+        if (head == NULL)
         {
             newNode->next = newNode;
             newNode->prev = newNode;
@@ -74,7 +75,7 @@ void CircularDouble<T>::insert(T toInsert, int pos)
     }
     else
     {
-        if(pos == length)
+        if (pos == length)
         {
             tail->next = newNode;
             newNode->prev = tail;
@@ -84,11 +85,11 @@ void CircularDouble<T>::insert(T toInsert, int pos)
         }
         else
         {
-            Node* ptr;
-            if(pos <= length/2)
+            Node *ptr;
+            if (pos <= length / 2)
             {
                 ptr = head;
-                for(int i = 1; i <= pos-1; i++)
+                for (int i = 1; i <= pos - 1; i++)
                     ptr = ptr->next;
                 newNode->next = ptr->next;
                 newNode->prev = ptr;
@@ -98,7 +99,7 @@ void CircularDouble<T>::insert(T toInsert, int pos)
             else
             {
                 ptr = tail;
-                for(int i = 1; i <= length-pos-1; i++)
+                for (int i = 1; i <= length - pos - 1; i++)
                     ptr = ptr->prev;
                 newNode->next = ptr;
                 newNode->prev = ptr->prev;
@@ -112,50 +113,50 @@ void CircularDouble<T>::insert(T toInsert, int pos)
 template <typename T>
 void CircularDouble<T>::display()
 {
-    if(!head)
+    if (!head)
     {
-        cout<<"List is empty\n";
+        cout << "List is empty\n";
         return;
     }
-    cout<<"Circular doubly-linked list elements:\n";
-    Node* ptr = head;
+    cout << "Circular doubly-linked list elements:\n";
+    Node *ptr = head;
     do
     {
-        cout<<ptr->data<<" ";
+        cout << ptr->data << " ";
         ptr = ptr->next;
-    }while(ptr != head);
-    cout<<"\nCircular doubly-linked list elements in reverse:\n";
+    } while (ptr != head);
+    cout << "\nCircular doubly-linked list elements in reverse:\n";
     ptr = tail;
     do
     {
-        cout<<ptr->data<<" ";
+        cout << ptr->data << " ";
         ptr = ptr->prev;
-    }while(ptr != tail);
-    cout<<"\n";
+    } while (ptr != tail);
+    cout << "\n";
 }
 
 template <typename T>
-CircularDouble<T>::CircularDouble(T* arr, int n):CircularDouble()
+CircularDouble<T>::CircularDouble(T *arr, int n) : CircularDouble()
 {
-    for(int i = 0; i < n; i++)
+    for (int i = 0; i < n; i++)
         insert(arr[i], i);
 }
 
 template <typename T>
-T* CircularDouble<T>::deleteNode(int pos)
+T *CircularDouble<T>::deleteNode(int pos)
 {
     int length = countNodes();
-    if(pos < 1 || pos > length)
+    if (pos < 1 || pos > length)
     {
-        cout<<"Invalid deletion position\n";
+        cout << "Invalid deletion position\n";
         return NULL;
     }
-    T* var = new T;
-    Node* ptr;
-    if(pos == 1)
+    T *var = new T;
+    Node *ptr;
+    if (pos == 1)
     {
         ptr = head;
-        if(length != 1)
+        if (length != 1)
         {
             head = ptr->next;
             head->prev = tail;
@@ -166,7 +167,7 @@ T* CircularDouble<T>::deleteNode(int pos)
     }
     else
     {
-        if(pos == length)
+        if (pos == length)
         {
             ptr = tail;
             tail = tail->prev;
@@ -175,10 +176,10 @@ T* CircularDouble<T>::deleteNode(int pos)
         }
         else
         {
-            if(pos <= length/2)
+            if (pos <= length / 2)
             {
                 ptr = head;
-                for(int i = 1; i <= pos-1; i++)
+                for (int i = 1; i <= pos - 1; i++)
                     ptr = ptr->next;
                 ptr->prev->next = ptr->next;
                 ptr->next->prev = ptr->prev;
@@ -186,7 +187,7 @@ T* CircularDouble<T>::deleteNode(int pos)
             else
             {
                 ptr = tail;
-                for(int i = 1; i <= length-pos; i++)
+                for (int i = 1; i <= length - pos; i++)
                     ptr = ptr->prev;
                 ptr->prev->next = ptr->next;
                 ptr->next->prev = ptr->prev;
@@ -202,15 +203,15 @@ template <typename T>
 CircularDouble<T>::~CircularDouble()
 {
     tail->next = head->prev = NULL;
-    Node* ptr = head;
-    while(ptr)
+    Node *ptr = head;
+    while (ptr)
     {
-        //cout<<ptr->data<<" ";
+        // cout<<ptr->data<<" ";
         head = head->next;
         delete ptr;
         ptr = head;
     }
-    cout<<"Circular doubly-linked list destructed\n";
+    cout << "Circular doubly-linked list destructed\n";
 }
 
 int main()
@@ -218,13 +219,13 @@ int main()
     int arr[5] = {10, 20, 30, 40, 50};
     CircularDouble<int> list(arr, 5);
     list.insert(35, 3);
-    int* del = list.deleteNode(3);
-    if(del)
+    int *del = list.deleteNode(3);
+    if (del)
     {
-        cout<<"Deleted node with element "<<*del<<"\n";
+        cout << "Deleted node with element " << *del << "\n";
         delete del;
     }
-    cout<<"Number of nodes: "<<list.countNodes()<<"\n";
+    cout << "Number of nodes: " << list.countNodes() << "\n";
     list.display();
     return 0;
 }

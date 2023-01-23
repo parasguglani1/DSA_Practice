@@ -6,7 +6,7 @@ Given the binary Tree and two nodes say ‘p’ and ‘q’. Determine whether t
 Do it in O(n).
 Input format :
 Line 1 : Nodes in level order form (separated by space). If any node does not have left or right child, take -1 in its place
-Line 2 : integer value of p 
+Line 2 : integer value of p
 Line 3 : Integer value of q
 
 Output format :

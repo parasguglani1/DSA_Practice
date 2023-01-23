@@ -1,10 +1,10 @@
 /*
  * Parameter Passing Methods
- * 
+ *
  * 1. Pass by value
  * 2. Pass by address, *
  * 3. Pass by reference, &
- * 
+ *
  * 'Pass by value' and 'pass by address' are more often used than 'pass by reference'.
  */
 
@@ -30,14 +30,17 @@ int add(int a, int b)
  * 2. In 'Pass/Call by address', the addresses of actual parameters are passed through formal
  * parameters and formal parameters must be pointers. Any changes made inside the function
  * will modify actual parameters using indirect access.
- * 
+ *
  * Here, all x's and y's must be turned into pointers, *. This is called 'dereferencing' which
  * is used as a means of accessing the data of actual parameters.
  */
 
 void swap(int *x, int *y)
 {
-  int temp; temp = *x; *x = *y; *y = temp;
+  int temp;
+  temp = *x;
+  *x = *y;
+  *y = temp;
 };
 
 /*
@@ -49,7 +52,10 @@ void swap(int *x, int *y)
 
 void swap(int &x, int &y)
 {
-  int temp; temp = x; x = y; y = temp;
+  int temp;
+  temp = x;
+  x = y;
+  y = temp;
 };
 
 // Main function
@@ -57,7 +63,8 @@ void swap(int &x, int &y)
 int main()
 {
   int a, b;
-  a = 10; b = 20;
+  a = 10;
+  b = 20;
   swap(a, b);
   cout << "a: " << a << endl;
   cout << "b: " << b << endl;

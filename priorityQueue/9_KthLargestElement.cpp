@@ -51,7 +51,7 @@ int klargest(int *input, int n, int k)
             pq.push(input[i]);
         }
     }
-    
+
     return pq.top();
 }
 int main()
@@ -71,7 +71,7 @@ int main()
     // {
     //     cout << output[i] << " ";
     // }
-    cout<<output;
+    cout << output;
     delete[] input;
 
     return 0;

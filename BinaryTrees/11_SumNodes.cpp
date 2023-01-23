@@ -49,20 +49,20 @@ Sample Output 2:
 using namespace std;
 int getSum(BinaryTreeNode<int> *root)
 {
-    if (!root)
-    {
-        return 0;
-    }
-    int sum = root->data;
-    sum += getSum(root->left);
-    sum += getSum(root->right);
-    return sum;
+  if (!root)
+  {
+    return 0;
+  }
+  int sum = root->data;
+  sum += getSum(root->left);
+  sum += getSum(root->right);
+  return sum;
 }
 
 int main()
 {
-    BinaryTreeNode<int> *root = taktInputLevelorder();
-    // printLevelorder(root);
-    cout << getSum(root);
-    return 0;
+  BinaryTreeNode<int> *root = taktInputLevelorder();
+  // printLevelorder(root);
+  cout << getSum(root);
+  return 0;
 }

@@ -95,7 +95,7 @@ int main()
             currentN = N;
         }
 
-        //can be done using two pointers as well 
+        // can be done using two pointers as well
 
         print(head);
     }

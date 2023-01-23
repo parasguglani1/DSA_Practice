@@ -40,8 +40,8 @@ Sample Output 2 :
 #include <bits/stdc++.h>
 using namespace std;
 
-//array rotation complexity is more
-/* 
+// array rotation complexity is more
+/*
 void leftRotateByOne(int *arr, int n)
 {
     int temp = arr[0];

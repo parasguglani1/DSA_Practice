@@ -32,7 +32,7 @@ Sample Output 3 :
 
 #include <bits/stdc++.h>
 using namespace std;
-//using sorting to find longest ignoring order
+// using sorting to find longest ignoring order
 int findLongestConseqSubseq(int a[], int N)
 {
     int count = 0, max = 0;
@@ -98,7 +98,7 @@ pair<int, int> getLongestConsecutiveSubsequenceSet(int arr[], int n)
     return ans;
     // return longestStreak;
 }
-//method 2 returning whole vector and using map instead of set
+// method 2 returning whole vector and using map instead of set
 /* vector<int> longestConsecutiveIncreasingSequence(int *arr, int n)
 {
     unordered_map<int, int> countMap;
@@ -132,8 +132,8 @@ pair<int, int> getLongestConsecutiveSubsequenceSet(int arr[], int n)
     return results;
 } */
 
-//method 3 vector of pairs with forward and backward propogation
-/* 
+// method 3 vector of pairs with forward and backward propogation
+/*
 vector<int> longestConsecutiveIncreasingSequence(int *arr, int n)
 {
     // Your Code goes here
@@ -207,7 +207,7 @@ vector<int> longestConsecutiveIncreasingSequence(int *arr, int n)
     }
 } */
 
-//similar to method 3
+// similar to method 3
 
 /* vector<int> longestConsecutiveIncreasingSequence(int *arr, int n)
 {

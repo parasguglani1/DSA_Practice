@@ -59,7 +59,7 @@ int main()
         Node *head = inputTillNegativeOne();
 
         // head = rReverseN2(head);
-        //using pair
+        // using pair
         // head = rReverse2(head);
 
         // simplest and best

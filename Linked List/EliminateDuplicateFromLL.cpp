@@ -52,7 +52,6 @@ int main()
     while (t--)
     {
 
-        
         Node *head = inputTillNegativeOne();
         Node *tail = NULL;
         Node *temp = NULL;

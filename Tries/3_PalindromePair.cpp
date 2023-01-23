@@ -63,6 +63,7 @@ public:
 class Trie
 {
     TrieNode *root;
+
 public:
     int count;
     Trie()

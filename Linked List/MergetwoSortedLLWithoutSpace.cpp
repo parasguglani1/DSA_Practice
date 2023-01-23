@@ -51,7 +51,7 @@ int main()
         // input
         Node *head = inputTillNegativeOne();
         Node *head2 = inputTillNegativeOne();
-       
+
         Node *head3 = mergeWithoutExtraSpace(head, head2);
 
         print(head3);

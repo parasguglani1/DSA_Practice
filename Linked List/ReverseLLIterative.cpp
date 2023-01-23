@@ -1,5 +1,5 @@
 /* Coding Problem
-Problem Statement: Reverse LL (Iterative) 
+Problem Statement: Reverse LL (Iterative)
 Problem Level: EASY
 Problem Description:
 Given a linked list, reverse it iteratively.
@@ -28,7 +28,7 @@ int main()
 
         print(head);
     }
-    //we can use stack as well to reverse ll
+    // we can use stack as well to reverse ll
 
     return 0;
 }

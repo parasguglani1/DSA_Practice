@@ -29,10 +29,9 @@ int sumItr(int n)
 int main()
 {
   int r = sumRec(5);
-  int n=5;
-int sum= n*(n+1)/2;
-cout<<sum<<endl;
-
+  int n = 5;
+  int sum = n * (n + 1) / 2;
+  cout << sum << endl;
 
   cout << r << endl;
   return 0;

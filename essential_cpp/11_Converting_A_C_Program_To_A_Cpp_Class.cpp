@@ -8,14 +8,14 @@ using namespace std;
 class Rectangle
 {
   // In C++, "class" is private by default whereas "struct" is public by default.
-  private:
+private:
   int length, width;
   /*
    * Then include all of the functions nested inside the class, remove "struct
    * Rectangle *r" as a parameter for all functions, and Declare the functions
    * as public.
    */
-  public:
+public:
   // Class/Object Constructor
   Rectangle(int l, int w)
   {

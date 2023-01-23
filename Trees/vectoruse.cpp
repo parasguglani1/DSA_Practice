@@ -60,9 +60,9 @@ int main()
 	* We do not use direct indexes to store the data in vector and instead use push_back()
 	* Because, in case of push_back() the size of the internal array increases everytime it reaches the limit
 	* Just like the dynamic array that we manually built (refer to lecture-7 in the copy)
-	* But in case of assigning value with indexes, the size does not increase. 
+	* But in case of assigning value with indexes, the size does not increase.
 	* We might try to allocate value to the memory location that is not allocated to us.
-		This will give us garbage values 
+		This will give us garbage values
 	* If we use indexes to put values and if gets out of bound then those values will not be stored
 	* We will use [] for only two things,
 		1. for getting the value stored in vector

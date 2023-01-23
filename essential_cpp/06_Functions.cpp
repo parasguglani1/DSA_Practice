@@ -1,11 +1,11 @@
 /*
  * Functions
- * 
+ *
  * Grouping data is a structure.
  * Grouping instructions is a function.
- * 
+ *
  * Functions are modules/procedures.
- * 
+ *
  * Monolithic programming vs Modular/Procedural programming.
  */
 
@@ -29,8 +29,11 @@ int add(int a, int b)
 int main()
 {
   int a, b;
-  cout << "Enter first number: "; cin >> a;
-  cout << "Enter second number: "; cin >> b;
-  cout << a << " + " << b << " = " << add(a, b); cout << endl;
+  cout << "Enter first number: ";
+  cin >> a;
+  cout << "Enter second number: ";
+  cin >> b;
+  cout << a << " + " << b << " = " << add(a, b);
+  cout << endl;
   return 0;
 }

@@ -1,6 +1,6 @@
-// Implementing max-heap and min-heap in-place on integer arrays 
-# include <iostream>
-# include <climits>
+// Implementing max-heap and min-heap in-place on integer arrays
+#include <iostream>
+#include <climits>
 using namespace std;
 
 /* n = array size in all functions, unless stated otherwise */
@@ -25,121 +25,123 @@ MaxHeap and MinHeap
 
 class utils
 {
-    public:
-    void swap(int& a, int& b)
+public:
+    void swap(int &a, int &b)
     {
         int temp = a;
         a = b;
         b = temp;
     }
-    void display(int* a, int n)
+    void display(int *a, int n)
     {
         cout << "Array elements: ";
-        for(int i = 1; i < n; i++)
+        for (int i = 1; i < n; i++)
             cout << a[i] << " ";
         cout << "\n";
     }
     int inpSize()
     {
         int size;
-        while(true)
+        while (true)
         {
             cout << "Enter the array size: ";
             cin >> size;
-            if(size > 0)
+            if (size > 0)
                 break;
             else
                 cout << "Invalid input, retry with a positive number\n";
         }
         return size;
     }
-    int* initArr(int* size)
+    int *initArr(int *size)
     {
-        *size = *size + 1; //0th index left
-        int* arr = new int[*size];
+        *size = *size + 1; // 0th index left
+        int *arr = new int[*size];
         arr[0] = INT_MIN;
-        for(int i = 1; i < *size; i++)
+        for (int i = 1; i < *size; i++)
         {
-            cout << "Enter " << i << "th element: "; 
-            cin >> arr[i]; 
+            cout << "Enter " << i << "th element: ";
+            cin >> arr[i];
         }
         return arr;
     }
-}Util;
+} Util;
 class Heap
 {
-    protected:
-    virtual void heapify(int*, int, int) = 0;
-    public:
-    virtual void insert(int*, int) = 0;
-    virtual int del(int*, int) = 0;
-    void buildHeap(int* arr, int n)
+protected:
+    virtual void heapify(int *, int, int) = 0;
+
+public:
+    virtual void insert(int *, int) = 0;
+    virtual int del(int *, int) = 0;
+    void buildHeap(int *arr, int n)
     {
-        int startInd = n/2;
-        for(int i = startInd; i >= 1; i--)
+        int startInd = n / 2;
+        for (int i = startInd; i >= 1; i--)
             heapify(arr, n, i);
     }
-    void createHeap(int* a, int n)
+    void createHeap(int *a, int n)
     {
-        for(int i = 2; i < n; i++)
+        for (int i = 2; i < n; i++)
             insert(a, i);
     }
-    void delAll(int* a, int n)
+    void delAll(int *a, int n)
     {
-        for(int i = 1; i < n-1; i++)
-            del(a, n-i);
+        for (int i = 1; i < n - 1; i++)
+            del(a, n - i);
     }
-    void heapSort(int* a, int n)
+    void heapSort(int *a, int n)
     {
         createHeap(a, n);
         delAll(a, n);
     }
-    void heapSortFast(int* a, int n)
+    void heapSortFast(int *a, int n)
     {
         buildHeap(a, n);
         delAll(a, n);
     }
 };
-class MaxHeap:public Heap
+class MaxHeap : public Heap
 {
-    protected:
-    void heapify(int* arr, int n, int i)
+protected:
+    void heapify(int *arr, int n, int i)
     {
         int largest = i;
-        int l = 2*i, r = l+1;
-        if(l < n && arr[l] > arr[largest])
+        int l = 2 * i, r = l + 1;
+        if (l < n && arr[l] > arr[largest])
             largest = l;
-        if(r < n && arr[r] > arr[largest])
+        if (r < n && arr[r] > arr[largest])
             largest = r;
-        if(largest != i)
+        if (largest != i)
         {
             Util.swap(arr[largest], arr[i]);
             heapify(arr, n, largest);
         }
     }
-    public:
-    void insert(int* a, int n)
+
+public:
+    void insert(int *a, int n)
     {
         // inserted at index n
         int i = n;
-        while(i > 1 && a[i] > a[i/2])
+        while (i > 1 && a[i] > a[i / 2])
         {
-            Util.swap(a[i], a[i/2]);
-            i = i/2;
+            Util.swap(a[i], a[i / 2]);
+            i = i / 2;
         }
     }
-    int del(int* a, int n)
+    int del(int *a, int n)
     {
         // delete root, replace with index n
         Util.swap(a[1], a[n]);
         int i = 1, j = 2;
-        while(j <= n-1) // n-1 represents index of last heap element
+        while (j <= n - 1) // n-1 represents index of last heap element
         {
-            if(a[j+1] > a[j])
+            if (a[j + 1] > a[j])
                 j++;
-            if(j == n) // we shan't access a[n] since it has been deleted
+            if (j == n) // we shan't access a[n] since it has been deleted
                 j--;
-            if(a[i] < a[j])
+            if (a[i] < a[j])
             {
                 Util.swap(a[i], a[j]);
                 i = j;
@@ -151,46 +153,47 @@ class MaxHeap:public Heap
         return a[n]; // is beyond the heap
     }
 };
-class MinHeap:public Heap
+class MinHeap : public Heap
 {
-    protected:
-    void heapify(int* arr, int n, int i)
+protected:
+    void heapify(int *arr, int n, int i)
     {
         int largest = i;
-        int l = 2*i, r = l+1;
-        if(l < n && arr[l] < arr[largest])
+        int l = 2 * i, r = l + 1;
+        if (l < n && arr[l] < arr[largest])
             largest = l;
-        if(r < n && arr[r] < arr[largest])
+        if (r < n && arr[r] < arr[largest])
             largest = r;
-        if(largest != i)
+        if (largest != i)
         {
             Util.swap(arr[largest], arr[i]);
             heapify(arr, n, largest);
         }
     }
-    public:
-    void insert(int* a, int n)
+
+public:
+    void insert(int *a, int n)
     {
         // inserted at index n
         int i = n;
-        while(i > 1 && a[i] < a[i/2])
+        while (i > 1 && a[i] < a[i / 2])
         {
-            Util.swap(a[i], a[i/2]);
-            i = i/2;
+            Util.swap(a[i], a[i / 2]);
+            i = i / 2;
         }
     }
-    int del(int* a, int n)
+    int del(int *a, int n)
     {
         // delete root, replace with index n
         Util.swap(a[1], a[n]);
         int i = 1, j = 2;
-        while(j <= n-1) // n-1 represents index of last heap element
+        while (j <= n - 1) // n-1 represents index of last heap element
         {
-            if(a[j+1] < a[j])
+            if (a[j + 1] < a[j])
                 j++;
-            if(j == n) // we shan't access a[n] since it has been deleted
+            if (j == n) // we shan't access a[n] since it has been deleted
                 j--;
-            if(a[i] > a[j])
+            if (a[i] > a[j])
             {
                 Util.swap(a[i], a[j]);
                 i = j;
@@ -207,7 +210,7 @@ int main()
 {
     MaxHeap minHeap;
     int size = Util.inpSize();
-    int* arr = Util.initArr(&size);
+    int *arr = Util.initArr(&size);
     minHeap.heapSortFast(arr, size);
     Util.display(arr, size);
     delete arr;

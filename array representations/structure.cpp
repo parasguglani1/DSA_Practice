@@ -8,9 +8,10 @@ int main()
         int length;
         int breadth;
     };
-    struct square{
+    struct square
+    {
         int side;
-        int area= side*side;
+        int area = side * side;
     };
 
     rectangle r1;
@@ -23,6 +24,6 @@ int main()
     cout << "length=" << r1.length << endl;
     cout << "breadth=" << r1.breadth << endl;
     cout << "area=" << s1.area << endl;
-    
+
     return 0;
 }

@@ -27,8 +27,8 @@ Node *deleted(int position, Node *head)
     }
     if (position == 0)
     {
-         
-        Node*temp=head->next;
+
+        Node *temp = head->next;
         delete head;
         return temp;
     }
@@ -47,15 +47,15 @@ Node *insert(int data, int position, Node *head)
     }
     if (position == 0)
     {
-        Node *newNode= new Node(data);
-        newNode->next=head;
+        Node *newNode = new Node(data);
+        newNode->next = head;
         // head->next=newNode;
         return newNode;
     }
     else
     {
-        Node* temp= insert(data, position - 1, head->next);
-        head->next= temp;
+        Node *temp = insert(data, position - 1, head->next);
+        head->next = temp;
         return head;
     }
 }

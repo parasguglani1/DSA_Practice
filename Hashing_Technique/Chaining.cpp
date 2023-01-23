@@ -6,7 +6,7 @@ Binary Search -> O(log N)
 in hashing a global array hsh[N] is declared.
 you know about this method thru luv
 
-Drawback: Space difficulty(a lot of space is required) 
+Drawback: Space difficulty(a lot of space is required)
 
 Hash Table: Keys are mapped on hash table
 
@@ -24,9 +24,8 @@ hsh(x) = x % 10;
 sometimes COLLISION occurs, when we need to store two values at same location, after applying modulus,
 so to solve this problem we have two mathods:
 
-1. Open hashing  
+1. Open hashing
 2. Closed Hashing */
-
 
 /* Hashing is mainly used for searching.
 Advantages:
@@ -77,33 +76,33 @@ an idea about the keys you're going to work with in order to choose the appropri
 */
 
 // Chaining in an elementary 10-cell hash table for integers
-# include <iostream>
+#include <iostream>
 using namespace std;
 
 class Node
 {
-    public:
+public:
     int data;
-    Node* next;
+    Node *next;
 };
 class LinkedList
-{ // The functions return back root as there is no Node* class member 
-    public:
-    Node* sortedInsert(Node*, int);
-    bool search(Node*, int);
-    Node* del(Node*, int);
-    Node* delAll(Node*);
+{ // The functions return back root as there is no Node* class member
+public:
+    Node *sortedInsert(Node *, int);
+    bool search(Node *, int);
+    Node *del(Node *, int);
+    Node *delAll(Node *);
 };
-Node* LinkedList::sortedInsert(Node* root, int toIns)
+Node *LinkedList::sortedInsert(Node *root, int toIns)
 {
-    Node* newNode = new Node;
-    if(!root)
+    Node *newNode = new Node;
+    if (!root)
     {
         newNode->data = toIns;
         newNode->next = NULL;
         root = newNode;
     }
-    else if(toIns < root->data)
+    else if (toIns < root->data)
     {
         newNode->data = toIns;
         newNode->next = root;
@@ -111,9 +110,9 @@ Node* LinkedList::sortedInsert(Node* root, int toIns)
     }
     else
     {
-        Node* temp = root;
-        Node* tailPtr; 
-        while(temp && toIns > temp->data)
+        Node *temp = root;
+        Node *tailPtr;
+        while (temp && toIns > temp->data)
         {
             tailPtr = temp;
             temp = temp->next;
@@ -124,40 +123,40 @@ Node* LinkedList::sortedInsert(Node* root, int toIns)
     }
     return root;
 }
-bool LinkedList::search(Node* root, int toFind)
+bool LinkedList::search(Node *root, int toFind)
 {
-    if(!root)
+    if (!root)
         return false;
-    Node* ptr = root;
-    while(ptr)
+    Node *ptr = root;
+    while (ptr)
     {
-        if(toFind < ptr->data)
+        if (toFind < ptr->data)
             return false;
-        else if(toFind > ptr->data)
+        else if (toFind > ptr->data)
             ptr = ptr->next;
         else
             return true;
     }
     return false; // reached the end
 }
-Node* LinkedList::del(Node* root, int toDel)
+Node *LinkedList::del(Node *root, int toDel)
 {
-    if(root)
+    if (root)
     {
-        Node* ptr = root;
-        Node* tailPtr;
-        while(ptr)
+        Node *ptr = root;
+        Node *tailPtr;
+        while (ptr)
         {
-            if(toDel < ptr->data) // not found
+            if (toDel < ptr->data) // not found
                 break;
-            else if(toDel > ptr->data) // persist
+            else if (toDel > ptr->data) // persist
             {
                 tailPtr = ptr;
                 ptr = ptr->next;
             }
             else // found
             {
-                if(ptr == root)
+                if (ptr == root)
                     root = NULL;
                 else
                     tailPtr->next = ptr->next;
@@ -169,10 +168,10 @@ Node* LinkedList::del(Node* root, int toDel)
     }
     return root;
 }
-Node* LinkedList::delAll(Node* root)
+Node *LinkedList::delAll(Node *root)
 {
-    Node* temp;
-    while(root)
+    Node *temp;
+    while (root)
     {
         temp = root;
         root = root->next;
@@ -183,19 +182,20 @@ Node* LinkedList::delAll(Node* root)
 
 class HashTable
 {
-    private:
-    Node** HT;
+private:
+    Node **HT;
     int size;
     LinkedList l;
     int hash(int x)
     {
-        return abs(x%size); // make changes as per requirements
+        return abs(x % size); // make changes as per requirements
     }
     int abs(int x)
     {
         return (x >= 0) ? x : -x;
     }
-    public:
+
+public:
     HashTable(int);
     void insert(int ele)
     {
@@ -214,15 +214,15 @@ class HashTable
     }
     ~HashTable()
     {
-        for(int i = 0; i < size; i++)
+        for (int i = 0; i < size; i++)
             HT[i] = l.delAll(HT[i]);
     }
 };
 HashTable::HashTable(int size)
 {
     this->size = (size >= 10) ? size : 10;
-    HT = new Node*[this->size];
-    for(int i = 0; i < this->size; i++)
+    HT = new Node *[this->size];
+    for (int i = 0; i < this->size; i++)
         HT[i] = NULL;
 }
 
@@ -230,26 +230,30 @@ int main()
 {
     HashTable h(10); // sizes greater than 10 can be passed
     int res;
-    while(true)
+    while (true)
     {
         cout << "1. Insert a number\n2. Search for a number\n";
         cout << "3. Delete a number\n4. Exit the menu\n";
-        cout << "Enter your choice: "; cin >> res;
-        if(res == 1)
+        cout << "Enter your choice: ";
+        cin >> res;
+        if (res == 1)
         {
             cout << "Enter a number to insert: ";
-            cin >> res; h.insert(res);
+            cin >> res;
+            h.insert(res);
             cout << res << " was inserted successfully\n";
         }
-        else if(res == 2)
+        else if (res == 2)
         {
-            cout << "Enter a key to search: "; cin >> res;
+            cout << "Enter a key to search: ";
+            cin >> res;
             cout << res << " was " << (h.search(res) ? "" : "not ") << "found\n";
         }
-        else if(res == 3)
+        else if (res == 3)
         {
-            cout << "Enter a key to delete: "; cin >> res;
-            if(h.search(res))
+            cout << "Enter a key to delete: ";
+            cin >> res;
+            if (h.search(res))
             {
                 h.del(res);
                 cout << res << " was successfully deleted\n";
@@ -257,7 +261,7 @@ int main()
             else
                 cout << res << " was not found in the hash table\n";
         }
-        else if(res == 4)
+        else if (res == 4)
         {
             cout << "Menu exited\n";
             break;

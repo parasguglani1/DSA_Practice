@@ -2,7 +2,7 @@
 
 /*
  * A recursive function is a function that calls itself given a base condition
- * 
+ *
  * Type fun(param)
  * {
  *  if (<base condition>)
@@ -12,11 +12,11 @@
  *    3. ___ // Executes at return time
  *  }
  * }
- * 
+ *
  * Recursion has two phases: 1) Calling phase and 2) Returning phase
- * 
+ *
  * Difference between a loop and a recursive function:
- * 
+ *
  * 1) Loop: A loop only has a calling (ascending) phase.
  * 2) Recursion: A recursive function contains both a calling and returning (descending)
  * phase.

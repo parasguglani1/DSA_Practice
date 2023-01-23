@@ -43,7 +43,7 @@ int main(void)
     {
         for (int j = 0; j < 4; j++)
         {
-            Q[i][j] = counter++; // Initializing them from 1 to 12
+            Q[i][j] = counter++;    // Initializing them from 1 to 12
             cout << Q[i][j] << " "; // Printing rows x columns
         }
         cout << endl;

@@ -1,23 +1,24 @@
-//Implementing a doubly-ended queue using linked lists
+// Implementing a doubly-ended queue using linked lists
 #include <iostream>
 using namespace std;
 
 template <typename T>
 class Node
 {
-    public:
+public:
     T data;
-    Node* prev;
-    Node* next;
+    Node *prev;
+    Node *next;
 };
 
 template <typename T>
 class DEqueue
 {
-    private:
-    Node<T>* front;
-    Node<T>* rear;
-    public:
+private:
+    Node<T> *front;
+    Node<T> *rear;
+
+public:
     DEqueue()
     {
         front = rear = NULL;
@@ -28,21 +29,21 @@ class DEqueue
     T deleteRear();
     ~DEqueue();
     template <typename U>
-    friend ostream& operator <<(ostream&, DEqueue<U>&);
+    friend ostream &operator<<(ostream &, DEqueue<U> &);
 };
 
 template <typename T>
 void DEqueue<T>::insertFront(T toInsert)
 {
-    Node<T>* newNode = new Node<T>;
-    if(!newNode)
+    Node<T> *newNode = new Node<T>;
+    if (!newNode)
     {
-        cout<<"Doubly-ended queue is full\n";
+        cout << "Doubly-ended queue is full\n";
         return;
     }
     newNode->data = toInsert;
     newNode->next = newNode->prev = NULL;
-    if(!front)
+    if (!front)
         front = rear = newNode;
     else
     {
@@ -55,15 +56,15 @@ void DEqueue<T>::insertFront(T toInsert)
 template <typename T>
 void DEqueue<T>::insertRear(T toInsert)
 {
-    Node<T>* newNode = new Node<T>;
-    if(!newNode)
+    Node<T> *newNode = new Node<T>;
+    if (!newNode)
     {
-        cout<<"Doubly-ended queue is full\n";
+        cout << "Doubly-ended queue is full\n";
         return;
     }
     newNode->data = toInsert;
     newNode->next = newNode->prev = NULL;
-    if(!front)
+    if (!front)
         front = rear = newNode;
     else
     {
@@ -77,12 +78,12 @@ template <typename T>
 T DEqueue<T>::deleteFront()
 {
     T var;
-    if(!front)
+    if (!front)
     {
-        cout<<"Doubly-ended queue is empty\n";
+        cout << "Doubly-ended queue is empty\n";
         return var;
     }
-    Node<T>* ptr = front;
+    Node<T> *ptr = front;
     front = front->next;
     front->prev = NULL;
     var = ptr->data;
@@ -94,12 +95,12 @@ template <typename T>
 T DEqueue<T>::deleteRear()
 {
     T var;
-    if(!front)
+    if (!front)
     {
-        cout<<"Doubly-ended queue is empty\n";
+        cout << "Doubly-ended queue is empty\n";
         return var;
     }
-    Node<T>* ptr = rear;
+    Node<T> *ptr = rear;
     rear = rear->prev;
     rear->next = NULL;
     var = ptr->data;
@@ -108,42 +109,42 @@ T DEqueue<T>::deleteRear()
 }
 
 template <typename T>
-ostream& operator <<(ostream& out, DEqueue<T>& d)
+ostream &operator<<(ostream &out, DEqueue<T> &d)
 {
-    if(!d.front)
+    if (!d.front)
     {
-        out<<"Doubly-ended queue is empty\n";
+        out << "Doubly-ended queue is empty\n";
         return out;
     }
-    out<<"Doubly ended queue elements:\n";
-    Node<T>* ptr = d.front;
-    while(ptr)
+    out << "Doubly ended queue elements:\n";
+    Node<T> *ptr = d.front;
+    while (ptr)
     {
-        out<<ptr->data<<" ";
+        out << ptr->data << " ";
         ptr = ptr->next;
     }
-    out<<"\nDoubly ended queue elements in reverse:\n";
+    out << "\nDoubly ended queue elements in reverse:\n";
     ptr = d.rear;
-    while(ptr)
+    while (ptr)
     {
-        out<<ptr->data<<" ";
+        out << ptr->data << " ";
         ptr = ptr->prev;
     }
-    out<<"\n";
+    out << "\n";
     return out;
 }
 
 template <typename T>
 DEqueue<T>::~DEqueue()
 {
-    Node<T>* ptr = front;
-    while(front)
+    Node<T> *ptr = front;
+    while (front)
     {
         front = front->next;
         delete ptr;
         ptr = front;
     }
-    cout<<"Doubly ended queue destructed\n";
+    cout << "Doubly ended queue destructed\n";
 }
 
 int main()
@@ -157,6 +158,6 @@ int main()
     d.insertFront(10);
     d.insertRear(50);
     d.insertRear(60);
-    cout<<d;
+    cout << d;
     return 0;
 }

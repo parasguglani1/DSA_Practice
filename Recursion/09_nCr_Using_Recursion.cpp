@@ -26,7 +26,8 @@ int NCR(int n, int r)
   return NCR(n - 1, r - 1) + NCR(n - 1, r);
 }
 
-int main() {
+int main()
+{
   cout << NCR(5, 3) << endl;
   return 0;
 }

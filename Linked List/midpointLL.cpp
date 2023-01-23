@@ -50,7 +50,6 @@ Sample Output 2 :
 using namespace std;
 #include "myLinkedlist.cpp"
 
-
 int main()
 {
     int t;
@@ -59,7 +58,7 @@ int main()
     {
 
         Node *head = inputTillNegativeOne();
-        Node*mid=getmidPoint(head);
+        Node *mid = getmidPoint(head);
 
         if (mid)
             cout << mid->data << endl;

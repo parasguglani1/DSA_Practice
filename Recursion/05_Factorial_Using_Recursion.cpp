@@ -3,7 +3,7 @@
 /*
  * n! = 1 * 2 * 3 * ... * n
  * 5! = 1 * 2 * 3 * 4 * 5
- * 
+ *
  * Write a recursive program to find n!
  */
 

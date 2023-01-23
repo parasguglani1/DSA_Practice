@@ -63,7 +63,7 @@ char *uniqueChar(char *str)
     return str;
 }
 
-//using map method 2
+// using map method 2
 char *uniqueChar(char *s)
 {
     unordered_map<char, int> m1;
@@ -82,7 +82,7 @@ char *uniqueChar(char *s)
     out[j] = '\0';
     return out;
 }
-//map
+// map
 string uniqueChar(string str)
 {
     unordered_map<char, bool> mp;
@@ -97,7 +97,7 @@ string uniqueChar(string str)
     }
     return res;
 }
-//using set
+// using set
 string uniqueChar(string str)
 {
     string answer;

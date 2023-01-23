@@ -4,7 +4,11 @@ https://www.geeksforgeeks.org/c-program-red-black-tree-insertion/ **/
 #include <bits/stdc++.h>
 using namespace std;
 
-enum Color {RED, BLACK};
+enum Color
+{
+	RED,
+	BLACK
+};
 
 struct Node
 {
@@ -15,9 +19,9 @@ struct Node
 	// Constructor
 	Node(int data)
 	{
-	this->data = data;
-	left = right = parent = NULL;
-	this->color = RED;
+		this->data = data;
+		left = right = parent = NULL;
+		this->color = RED;
 	}
 };
 
@@ -26,10 +30,12 @@ class RBTree
 {
 private:
 	Node *root;
+
 protected:
 	void rotateLeft(Node *&, Node *&);
 	void rotateRight(Node *&, Node *&);
 	void fixViolation(Node *&, Node *&);
+
 public:
 	// Constructor
 	RBTree() { root = NULL; }
@@ -52,11 +58,11 @@ void inorderHelper(Node *root)
 /* A utility function to insert
 	a new node with given key
 in BST */
-Node* BSTInsert(Node* root, Node *pt)
+Node *BSTInsert(Node *root, Node *pt)
 {
 	/* If the tree is empty, return a new node */
 	if (root == NULL)
-	return pt;
+		return pt;
 
 	/* Otherwise, recur down the tree */
 	if (pt->data < root->data)
@@ -153,7 +159,7 @@ void RBTree::fixViolation(Node *&root, Node *&pt)
 	Node *grand_parent_pt = NULL;
 
 	while ((pt != root) && (pt->color != BLACK) &&
-		(pt->parent->color == RED))
+		   (pt->parent->color == RED))
 	{
 
 		parent_pt = pt->parent;
@@ -171,7 +177,7 @@ void RBTree::fixViolation(Node *&root, Node *&pt)
 			The uncle of pt is also red
 			Only Recoloring required */
 			if (uncle_pt != NULL && uncle_pt->color ==
-												RED)
+										RED)
 			{
 				grand_parent_pt->color = RED;
 				parent_pt->color = BLACK;
@@ -196,7 +202,7 @@ void RBTree::fixViolation(Node *&root, Node *&pt)
 				Right-rotation required */
 				rotateRight(root, grand_parent_pt);
 				swap(parent_pt->color,
-						grand_parent_pt->color);
+					 grand_parent_pt->color);
 				pt = parent_pt;
 			}
 		}
@@ -212,7 +218,7 @@ void RBTree::fixViolation(Node *&root, Node *&pt)
 				The uncle of pt is also red
 				Only Recoloring required */
 			if ((uncle_pt != NULL) && (uncle_pt->color ==
-													RED))
+									   RED))
 			{
 				grand_parent_pt->color = RED;
 				parent_pt->color = BLACK;
@@ -236,7 +242,7 @@ void RBTree::fixViolation(Node *&root, Node *&pt)
 				Left-rotation required */
 				rotateLeft(root, grand_parent_pt);
 				swap(parent_pt->color,
-						grand_parent_pt->color);
+					 grand_parent_pt->color);
 				pt = parent_pt;
 			}
 		}
@@ -258,7 +264,7 @@ void RBTree::insert(const int &data)
 }
 
 // Function to do inorder and level order traversals
-void RBTree::inorder()	 { inorderHelper(root);}
+void RBTree::inorder() { inorderHelper(root); }
 void RBTree::levelOrder() { levelOrderHelper(root); }
 
 // Driver Code

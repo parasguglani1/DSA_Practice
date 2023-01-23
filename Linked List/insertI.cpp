@@ -26,14 +26,14 @@ int main()
     // insert at ith position
     int i = 5;
     temp = head;
-    for (int j = 0; j < i-1; j++)
+    for (int j = 0; j < i - 1; j++)
     {
         temp = temp->next;
     }
     Node *newNode = new Node(69);
     newNode->next = temp->next;
     temp->next = newNode;
-    
+
     // display
     temp = head;
     while (temp != NULL)
@@ -56,10 +56,10 @@ int main()
         cout << temp->data << " ";
         temp = temp->next;
     }
-    
+
     Node *n1 = new Node(10);
     Node n2(20);
-  
+
     // since n2 is normal object - we can use . to access members.
     n2.next = head;
     // since n1 is pointer - we need to use lambda

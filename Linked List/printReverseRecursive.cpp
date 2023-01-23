@@ -58,7 +58,7 @@ int main()
         // input
         Node *head1 = inputTillNegativeOne();
         printReverseR(head1);
-        cout<<endl;
+        cout << endl;
     }
     return 0;
 }

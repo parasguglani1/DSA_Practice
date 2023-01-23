@@ -54,7 +54,7 @@ Sample Output 2 :
 #include <bits/stdc++.h>
 using namespace std;
 #include "myLinkedlist.cpp"
-//similar but clean
+// similar but clean
 Node *swapNodes(Node *head, int m, int n)
 {
     if (m == n || head == NULL || head->next == NULL)
@@ -143,14 +143,12 @@ int main()
         if (i == 0 && j == 1)
         {
             Node *temp3 = head->next->next;
-            Node1=head;
-            head=head->next;
-            head->next=Node1;
-            Node1->next= temp3;
-
-        
+            Node1 = head;
+            head = head->next;
+            head->next = Node1;
+            Node1->next = temp3;
         }
-         else if (i == 0)
+        else if (i == 0)
         {
             while (temp && count <= j - 1)
             {

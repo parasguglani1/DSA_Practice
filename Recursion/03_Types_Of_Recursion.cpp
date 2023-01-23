@@ -87,7 +87,9 @@ int fun5(int n)
   if (n > 100)
   {
     return n - 10;
-  } else {
+  }
+  else
+  {
     return fun5(fun5(n + 11));
   }
 }

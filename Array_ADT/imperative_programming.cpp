@@ -7,7 +7,7 @@ int main()
     // *initalize
     for (int i = 0; i < n; i++)
     {
-        a[i] = 2*i;
+        a[i] = 2 * i;
     }
 
     /*
@@ -111,19 +111,19 @@ int main()
 
     * insert in sorted array
 
-    
+
    int to_insert=23;
    int i=n-1;
    n++;
  while (to_insert<a[i])
- { 
+ {
      a[i+1]=a[i];
-     i--;    
+     i--;
  }
  a[i+1]=to_insert;
- 
+
  *is sorted
- 
+
 for(int i =0; i<n-2;i++)
 {
     if( a[i]>a[i+1])
@@ -134,8 +134,6 @@ for(int i =0; i<n-2;i++)
 
 }
   */
-
-
 
     // display
     for (int i = 0; i < n; i++)

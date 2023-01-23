@@ -32,5 +32,5 @@ There are two types of maps:
     // Erase element
     mp.erase("ghi");
 
-       return 0;
+    return 0;
 }

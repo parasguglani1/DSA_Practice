@@ -40,10 +40,10 @@ bool checkMaxHeap(int *input, int n)
 {
     for (int i = 0; i < n; i++)
     {
-        if ((2 * i+1 )< n && input[i] < input[2 * i+1])
+        if ((2 * i + 1) < n && input[i] < input[2 * i + 1])
         {
             // cout<<i<<endl;
-            
+
             return false;
         }
         if (2 * i + 2 < n && input[i] < input[2 * i + 2])

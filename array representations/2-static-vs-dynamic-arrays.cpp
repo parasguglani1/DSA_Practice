@@ -24,15 +24,15 @@ int main(void)
 
     A[0] = 1; // Accessing arrays in stack
 
-    *q = 1; // Accessing in heap by using a pointer
+    *q = 1;   // Accessing in heap by using a pointer
     q[0] = 1; // Also possible
 
     printf("%d\n", q[0]);
     printf("%d\n", *q);
 
     // After you no longer need the array, delete memory to avoid memory leak
-    free(p); // C
-    delete []q; // C++
+    free(p);    // C
+    delete[] q; // C++
 
     /* Once the size of a stack array is decided, it cannot be changed.
     In heap, the same array cannot be resized, but there's an alternative */

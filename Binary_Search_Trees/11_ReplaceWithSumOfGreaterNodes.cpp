@@ -40,7 +40,7 @@ int replaceSum(BinaryTreeNode<int> *root, int sum)
     root->data = sum;
     sum = replaceSum(root->left, sum);
     return sum;
-} 
+}
 
 int main()
 {
