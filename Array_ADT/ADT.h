@@ -3,7 +3,7 @@
 17:30 -  extend(), append(T), enterElements(T), display() and a minimal main()
 18:52 - insert(T, int), delete(int), lSearch(T), bSearch(T), isSorted(), get(int), set(T, int), largest() and smallest()
 19:19 - sum(), rSum(int) and average()
-20:58 - lShift(), rShift(), lRotate(), rRotate(), ShiftRotate(int, int) and setEqual(A                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          rray<T>*)
+20:58 - lShift(), rShift(), lRotate(), rRotate(), ShiftRotate(int, int) and setEqual(Array<T>*)
 22:09 - insertSorted(Array), negLeft(), mergeSorted(Array), Union(Array), Intersection(Array) and Difference(Array)
 Removed main()
 */
@@ -139,7 +139,7 @@ void Array<T>::insert(T toAdd, int index)
     for(int i = length-1; i >= index; i--)
         ptr[i+1] = ptr[i];
     ptr[index] = toAdd;
-    length++; 
+    length++;
 }
 
 template <typename T>
@@ -221,7 +221,7 @@ bool Array<T>::isSorted()
         {
             if(ptr[i] < ptr[i+1])
                 return false;
-        }            
+        }
     }
     return true;
 }
@@ -438,7 +438,7 @@ void Array<T>::insertSorted(T element)
         extend();
         int i = length - 1;
         //to cater to descending arrays
-        int f = 0, j = 0; 
+        int f = 0, j = 0;
         while(ptr[j] == ptr[j+1]){j++;}
         if(ptr[j] > ptr[j+1])
         {
@@ -487,14 +487,14 @@ Array<T>* Array<T>::mergeSorted(Array<T> b)
     {
         if(ptr[i] < b.ptr[j])
             c->ptr[k++] = ptr[i++];
-        else 
+        else
             c->ptr[k++] = b.ptr[j++];
     }
     for(; i < length; i++)
         c->ptr[k++] = ptr[i];
     for(; j < b.length; j++)
         c->ptr[k++] = b.ptr[j];
-    
+
     c->length = k;
     return c;
 }
@@ -523,11 +523,11 @@ Array<T>* Array<T>::Union(Array b)
         for(; j < b.length; j++)
             c->ptr[k++] = b.ptr[j];
     }
-    else //naïve implementation 
+    else //naïve implementation
     {
         for(; i < length; i++)
             c->ptr[k++] = ptr[i]; //copy everything from first array
-        
+
         for(; j < b.length; j++)
         {
             if(this->lSearch(b.ptr[j]) == -1) //copy only if dissimilar
@@ -561,7 +561,7 @@ Array<T>* Array<T>::Intersection(Array b)
         }
         //No remnants to be copied
     }
-    else //naïve implementation 
+    else //naïve implementation
     {
         for(; i < length; i++)
             if(b.lSearch(ptr[i]) != -1) //if found in second array, copy
@@ -595,7 +595,7 @@ Array<T>* Array<T>::Difference(Array b)
             c->ptr[k++] = ptr[i];
         //remnants from second array not needed
     }
-    else //naïve implementation 
+    else //naïve implementation
     {
         for(; i < length; i++)
             if(b.lSearch(ptr[i]) == -1) //if not found in second array, copy

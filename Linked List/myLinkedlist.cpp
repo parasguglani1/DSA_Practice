@@ -236,7 +236,55 @@ Node *reverseIterative(Node *head)
     // single node case
     return first;
 }
-
+Node *separateevenodd(Node *head)
+{
+    Node *odd = NULL;
+    Node *even = NULL;
+    Node *oddtail = NULL;
+    Node *eventail = NULL;
+    Node *temp = head;
+    while (temp)
+    {
+        if ((temp->data) % 2 == 0)
+        {
+            if (!even)
+            {
+                even = temp;
+                eventail = temp;
+            }
+            else
+            {
+                eventail->next = temp;
+                eventail = temp;
+            }
+        }
+        else
+        {
+            if (!odd)
+            {
+                odd = temp;
+                oddtail = temp;
+            }
+            else
+            {
+                oddtail->next = temp;
+                oddtail = temp;
+            }
+        }
+        temp = temp->next;
+    }
+    if (odd)
+    {
+        oddtail->next = even;
+        eventail->next = NULL;
+        return odd;
+    }
+    else
+    {
+        eventail->next = NULL;
+        return even;
+    }
+}
 // shorter
 Node *reverseLinkedListIterative(Node *head)
 {
